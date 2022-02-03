@@ -1,0 +1,21 @@
+
+<form (ngSubmit)="login()" autocomplete="off" #formularioLogin="ngForm">
+  <div>
+    <label> Correo electronico: </label>
+    <input type="email" [(ngModel)]="usuario.email" name="email" id="email">
+    <span class="form-text text-danger" *ngIf="formularioLogin.controls['email']?.errors
+    && formularioLogin.controls['email']?.touched">
+    Debe introducir un email, Gracias.
+    </span>
+  </div>
+  <div>
+    <label> Contraseña </label>
+    <input type="password" [(ngModel)]="usuario.password" name="password" id="password">
+    <span class="form-text text-danger" *ngIf="formularioLogin.controls['password']?.errors
+    && formularioLogin.controls['password']?.touched">
+    Debe introducir una contraseña, Gracias.
+    </span>
+  </div>
+  <button type="submit" class="btn btn-primary float-end" [disabled]="formularioLogin.invalid" (click)="login()">
+    Loguear</button>
+</form>
