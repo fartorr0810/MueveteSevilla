@@ -24,7 +24,7 @@ export class ControlAccesoService {
   }
 
   comprobarToken():Observable <AuthResponse>{
-    let direccionurl=this.url+"/home";
+    let direccionurl="http://localhost:4200/home";
     let headers=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}` || '');
     return this.http.get<AuthResponse>(direccionurl,{headers});
   }

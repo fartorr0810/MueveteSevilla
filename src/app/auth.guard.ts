@@ -13,16 +13,13 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree| any {
-
     return this.serviciocontrol.comprobarToken()
     .pipe(
         map( resp => {
           console.log(resp);
-
           return true
         }),
         catchError( err => {
-          console.log(err.message);
             Swal.fire({
               title: 'El token ha expirado, renuevalo',
               text: 'Inicia sesion',

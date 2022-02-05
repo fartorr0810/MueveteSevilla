@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { ControlAccesoModule } from './control-acceso/control-acceso.module';
 import { FormsModule } from '@angular/forms';
 import { ControlAccesoService } from './control-acceso/services/control-acceso.service';
-import { LoginComponent } from './control-acceso/login/login.component';
+import { HomeModule } from './home/home.module';
+import { AuthGuard } from './auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,9 +16,10 @@ import { LoginComponent } from './control-acceso/login/login.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ControlAccesoModule
+    ControlAccesoModule,
+    HomeModule
   ],
-  providers: [ControlAccesoService],
+  providers: [ControlAccesoService,AuthGuard,HomeModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
