@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { UsuarioLogin } from '../interfaces/auth-response.interface';
 import { ControlAccesoService } from '../services/control-acceso.service';
 @Component({
@@ -39,7 +40,12 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/home');
         }),
         error:resp=>{
-          console.log("Aqui va SweetAlert");
+          Swal.fire({
+            title: resp.error.message,
+            text: 'Email o Password Incorrecto',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          })
         }
       })
     }
