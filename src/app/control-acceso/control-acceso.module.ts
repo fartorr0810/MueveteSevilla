@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ControlAccesoService } from './services/control-acceso.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     RegisterComponent,
