@@ -12,28 +12,27 @@ import { ControlAccesoService } from '../services/control-acceso.service';
 })
 export class LoginComponent implements OnInit {
 
-  @ViewChild('miFormulario') miFormulario!:NgForm;
+  formulario:FormGroup=this.fb.group({
+    email:!['',[Validators.required,Validators.email]],
+    password:!['',[Validators.required,Validators.minLength(5)]]
+  })
 
-  initForm={
-    email:'',
-    password:''
-  }
   usuario: UsuarioLogin={
     email:'',
     password:''
   }
   constructor(
       private router: Router,
-      private authservice: ControlAccesoService) {
+      private authservice: ControlAccesoService,
+      private fb:FormBuilder) {
   }
 
   ngOnInit(): void {
   }
 
   login(){
-    const {email,password}=this.miFormulario.value;
-    console.log(this.miFormulario.value);
-    if (this.miFormulario.value){
+    console.log(this.formulario.value);
+    if (this.formulario.value){
       this.authservice.login(this.usuario.email,this.usuario.password).subscribe({
         next:(resp=>{
           localStorage.setItem('token',resp.access_token!)

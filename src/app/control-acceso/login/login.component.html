@@ -1,27 +1,29 @@
- <div class="container">
-<form (ngSubmit)="login()" autocomplete="off" #miFormulario="ngForm" class="well form-horizontal">
-  <div class="form-group">
-    <label> Correo electronico: </label>
-    <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email" id="email">
-    <!-- <span class="form-text text-danger">
+<div class="container">
+    <form (ngSubmit)="login()" autocomplete="off" #formulario="ngForm" class="well form-horizontal">
+        <div class="form-group">
+            <label> Correo electronico: </label>
+            <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email" id="email" required>
+            <span class="input-group">
+            </span>
+            <span class="form-text text-danger" *ngIf="formulario.controls['email']?.errors && formulario.controls['email']?.touched">
     Debe introducir un email, Gracias.
-    </span> -->
-  </div>
-  <div class="form-group">
-    <label> Contraseña </label>
-    <input type="password"  class="form-control" [(ngModel)]="usuario.password" name="password" id="password">
-    <!-- <span class="form-text text-danger">
+    </span>
+        </div>
+        <div class="form-group">
+            <label> Contraseña </label>
+            <input type="password" class="form-control" [(ngModel)]="usuario.password" name="password" id="password" required>
+            <span class="form-text text-danger" *ngIf="formulario.controls['password']?.errors && formulario.controls['password']?.touched">
     Debe introducir una contraseña, Gracias.
-    </span> -->
-  </div>
-  <button type="submit" class="btn btn-primary float-end" [disabled]="miFormulario.invalid" (click)="login()">
+    </span>
+        </div>
+        <button type=" submit " class="btn btn-primary float-end " [disabled]="formulario.invalid">
     Loguear</button>
-</form>
-  <div class="row">
-    <div class="col">
-      <div class="">
-        <a class="" [routerLink]="['/register']">No tengo cuenta, deseo registrarme</a>
-      </div>
+    </form>
+    <div class="row ">
+        <div class="col ">
+            <div class=" ">
+                <a class=" " [routerLink]="[ '/register'] ">No tengo cuenta, deseo registrarme</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

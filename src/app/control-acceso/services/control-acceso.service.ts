@@ -28,4 +28,15 @@ export class ControlAccesoService {
     let headers=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}` || '');
     return this.http.get<AuthResponse>(direccionurl,{headers});
   }
+  //TODO hacer interfaz usuario
+  register(email:string,password:string,username:string,name:string){
+    let direccionurl=this.url+"auth/register";
+    let bodypeticion={
+      'email':email,
+      'password':password,
+      'username':username,
+      'name':name
+      }
+    return this.http.post<AuthResponse>(direccionurl,bodypeticion);
+  }
 }
