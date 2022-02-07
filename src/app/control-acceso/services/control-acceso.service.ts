@@ -30,7 +30,7 @@ export class ControlAccesoService {
   }
   //TODO hacer interfaz usuario
   register(email:string,password:string,username:string,name:string){
-    let direccionurl=this.url+"auth/register";
+    let direccionurl=this.url+"/auth/register";
     let bodypeticion={
       'email':email,
       'password':password,
