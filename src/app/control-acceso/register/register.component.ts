@@ -46,12 +46,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigateByUrl('/home');
         }),
         error:resp=>{
-          Swal.fire({
-            title: resp.error.message,
-            text: 'Email o Password Incorrecto',
-            icon: 'error',
-            confirmButtonText: 'Ok'
-          })
+          console.log(resp);
         }
       })
     }
