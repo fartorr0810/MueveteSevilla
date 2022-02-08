@@ -49,10 +49,5 @@ export class LoginComponent implements OnInit {
       })
     }
   }
-  // emailValido():boolean{
-  //   return this.miFormulario?.controls['email'].invalid && this.miFormulario?.controls['email'].touched;
-  // }
-  // passwordValido():boolean{
-  //   return this.miFormulario?.controls['password']?.invalid && this.miFormulario?.controls['password'].touched;
-  // }
+
 }

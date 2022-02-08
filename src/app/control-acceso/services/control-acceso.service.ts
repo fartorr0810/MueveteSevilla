@@ -20,13 +20,15 @@ export class ControlAccesoService {
       'email':email,
       'password':password
     }
-    return this.http.post<AuthResponse>(direccionurl,bodypeticion);
+    const httpHeaders=new HttpHeaders()
+    httpHeaders.append('Access-Control-Allow-Origin','*');
+    return this.http.post<AuthResponse>(direccionurl,bodypeticion,{ headers: httpHeaders});
   }
 
   comprobarToken():Observable <AuthResponse>{
     let direccionurl="http://localhost:9000/user";
-    let headers=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}` || '');
-    return this.http.get<AuthResponse>(direccionurl,{headers});
+    const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<AuthResponse>(direccionurl,{headers :httpHeaders});
   }
   //TODO hacer interfaz usuario
   register(email:string,password:string,username:string,name:string){
@@ -34,14 +36,13 @@ export class ControlAccesoService {
     let bodypeticion={
       'email':email,
       'password':password,
-      'name':name,
-      'username':username
+      'nombre':name,
+      'nickname':username
       }
     const httpHeaders=new HttpHeaders()
     httpHeaders.append('Access-Control-Allow-Origin','*');
     //httpHeaders.append('Access-Control-Allow-Origin','*');
     //httpHeaders.append('Content-Type','application/json')
-    //httpHeaders.append('Authorization','authkey');
     return this.http.post<AuthResponse>(direccionurl,bodypeticion,{ headers: httpHeaders});
   }
 }
