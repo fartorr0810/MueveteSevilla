@@ -1,5 +1,5 @@
 export interface AuthResponse{
-  access_token:string
+  jwt_token:string
 }
 export interface UsuarioLogin{
   email:string,

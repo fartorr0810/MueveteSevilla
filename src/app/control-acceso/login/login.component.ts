@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     if (this.formulario.value){
       this.authservice.login(this.usuario.email,this.usuario.password).subscribe({
         next:(resp=>{
-          localStorage.setItem('token',resp.access_token!)
+          localStorage.setItem('token',resp.jwt_token!)
           this.router.navigateByUrl('/home');
         }),
         error:resp=>{
