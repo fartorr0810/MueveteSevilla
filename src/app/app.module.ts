@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { ControlAccesoService } from './control-acceso/services/control-acceso.service';
 import { HomeModule } from './home/home.module';
 import { AuthGuard } from './auth.guard';
+import { ContactoModule } from './contacto/contacto.module';
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,9 +19,12 @@ import { AuthGuard } from './auth.guard';
     AppRoutingModule,
     FormsModule,
     ControlAccesoModule,
-    HomeModule
+    HomeModule,
+    ContactoModule,
+    SharedModule
   ],
-  providers: [ControlAccesoService,AuthGuard,HomeModule],
-  bootstrap: [AppComponent]
+  providers: [ControlAccesoService,AuthGuard],
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule { }

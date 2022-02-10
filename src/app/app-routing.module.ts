@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { ContactoComponent } from './contacto/contacto/contacto.component';
 import { LoginComponent } from './control-acceso/login/login.component';
 import { RegisterComponent } from './control-acceso/register/register.component';
-import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { HomeComponent } from './home/home/home.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:DashboardComponent,canActivate:[AuthGuard]
+    path:'',canActivate:[AuthGuard],
+    loadChildren:()=> import('./shared/shared.module').then(m=> m.SharedModule)
   },
    {
      path:'login',
@@ -19,10 +20,14 @@ const routes: Routes = [
      path:'register',
      component:RegisterComponent
    },
-  {
-    path:'home',
-    component:DashboardComponent,canActivate:[AuthGuard]
-  },
+   {
+     path:'home',
+     component:HomeComponent
+   },
+   {
+    path:'contacto',canActivate:[AuthGuard],
+    loadChildren:()=> import('./contacto/contacto.module').then(m=>m.ContactoModule)
+   },
   {
     path:'**',
     redirectTo:'home'
