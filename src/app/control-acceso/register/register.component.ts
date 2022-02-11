@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
         this.formulario.value.username,this.formulario.value.name).subscribe({
         next:(resp=>{
           console.log(resp);
-          localStorage.setItem('token',resp.jwt_token!)
+          localStorage.setItem('token',resp.jwt_token!);
           this.router.navigateByUrl('/home');
         }),
         error:resp=>{

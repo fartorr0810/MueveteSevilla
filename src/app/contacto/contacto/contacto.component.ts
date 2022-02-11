@@ -10,30 +10,52 @@ import { ComentarioI } from '../interfaces/comentario.interface';
   styleUrls: []
 })
 export class ContactoComponent implements OnInit {
-  formulario:FormGroup=this.fb.group({
-    email:!['',[Validators.required,Validators.email]],
-    telefono:!['',[Validators.required,Validators.minLength(5)]],
-    dni:!['',[Validators.required,Validators.minLength(5)]],
-    contenidocomentario:!['',[Validators.required,Validators.minLength(5)]],
-    usuario:!['',[Validators.required,Validators.minLength(5)]],
 
-  })
-
-  comentario: ComentarioI={
-    email:'',
-    telefono:'',
-    dni:'',
-    contenidocomentario:'',
-    usuario:Number(localStorage.getItem("idusuario"))
-  }
+  formularioContacto!:FormGroup;
 
   constructor(  private router: Router,
     private authservice: ControlAccesoService,
     private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    this.buildForm();
   }
-  enviar(){
 
+  buildForm(){
+    this.formularioContacto=this.fb.group({
+      email:['',[Validators.required,Validators.email]],
+      telefono:['',[Validators.required,Validators.minLength(9)]],
+      dni:['',[Validators.required,Validators.minLength(5),Validators.pattern("^[0-9]{8,8}[A-Za-z]$")]],
+      contenidocomentario:['',[Validators.required,Validators.minLength(20)]],
+      usuario:Number(localStorage.getItem('idusuario'))
+    })
+  }
+
+
+  campoEsValido(campo:string) {
+    return this.formularioContacto.controls[campo].errors
+            && this.formularioContacto.controls[campo].touched;
+  }
+
+  enviar(){
+     let comentario=this.formularioContacto.value;
+     console.log(comentario);
+     this.authservice.obtenerUser();
+
+    if (this.formularioContacto.value && !this.formularioContacto.controls['email'].errors &&
+    !this.formularioContacto.controls['telefono'].errors && !this.formularioContacto.controls['email'].errors
+    && !this.formularioContacto.controls['dni'].errors && !this.formularioContacto.controls['contenidocomentario']){
+      // this.authservice.register(this.formularioContacto.value.email,this.formularioContacto.value.password,
+      //   this.formularioContacto.value.username,this.formularioContacto.value.name).subscribe({
+      //   next:(resp=>{
+      //     console.log(resp);
+      //     localStorage.setItem('token',resp.jwt_token!)
+      //     this.router.navigateByUrl('/home');
+      //   }),
+      //   error:resp=>{
+      //     console.log(resp);
+      //   }
+      // })
+    }
   }
 }

@@ -1,47 +1,44 @@
 <section class="vh-100 bg-image">
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-      <div class="container h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                  <div class="card" style="border-radius: 15px;">
-                      <div class="card-body p-5">
-                          <h2 class="text-uppercase text-center mb-5">Contacta con nosotros</h2>
-                          <form (ngSubmit)="enviar()" autocomplete="off" #formulario="ngForm">
-                              <div class="form-outline mb-4">
-                                  <label class="form-label">Email</label>
-                                  <input type="text" formControlName="name" [(ngModel)]="comentario.email" class="form-control form-control-lg" required/>
-                                  <span class="form-text text-danger">Debe introducir un email valido</span>
-                              </div>
-                              <div class="form-outline mb-4">
-                                  <label class="form-label">Telefono</label>
-                                  <input type="text" formControlName="username" [(ngModel)]="comentario.telefono" class="form-control form-control-lg" required />
-                                  <span class="form-text text-danger">Debe introducir un numero de telefono valido</span>
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Contacta con nosotros</h2>
+                            <form [formGroup]="formularioContacto">
+                                <div class="form-outline mb-4">
+                                    <label class="form-label">Email</label>
+                                    <input type="text" formControlName="email" class="form-control form-control-lg" required/>
+                                    <span class="form-text text-danger" *ngIf="campoEsValido('email')">Debe introducir un email valido</span>
+                                </div>
+                                <div class="form-outline mb-4 ">
+                                    <label class="form-label ">Telefono</label>
+                                    <input type="text " formControlName="telefono" class="form-control form-control-lg " required />
+                                    <span class="form-text text-danger " *ngIf="campoEsValido('telefono')">Debe introducir un numero de telefono valido</span>
 
-                              </div>
-                              <div class="form-outline mb-4">
-                                  <label class="form-label">DNI</label>
-                                  <input type="email" formControlName="email" [(ngModel)]="comentario.dni" class="form-control form-control-lg" required/>
-                                  <span class="form-text text-danger">Debe introducir un DNI valido</span>
+                                </div>
+                                <div class="form-outline mb-4 ">
+                                    <label class="form-label ">DNI</label>
+                                    <input type="email " formControlName="dni" class="form-control form-control-lg " required/>
+                                    <span class="form-text text-danger " *ngIf="campoEsValido('dni')">Debe introducir un DNI valido</span>
 
-                              </div>
+                                </div>
 
-                              <div class="form-outline mb-4">
-                                  <label class="form-label">Comentario</label>
-                                  <input type="text" formControlName="password" [(ngModel)]="comentario.contenidocomentario" class="form-control form-control-lg" required/>
-                                  <span class="form-text text-danger">No puede dejar el comentario vacio</span>
+                                <div class="form-outline mb-4 ">
+                                    <label class="form-label ">Comentario</label>
+                                    <input type="text " formControlName="contenidocomentario" class="form-control form-control-lg " required/>
+                                    <span class="form-text text-danger " *ngIf="campoEsValido('contenidocomentario')">No puede dejar el comentario vacio</span>
 
-                              </div>
-                              <div class="d-flex justify-content-center">
-                                  <button type="button" [disabled]="formulario.invalid" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Enviar comentario</button>
-                              </div>
-
-                              <p class="text-center text-muted mt-5 mb-0">Si tienes una cuenta , haz <a routerLink="/login" class="fw-bold text-body"><u>Login</u></a></p>
-                          </form>
-
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                                </div>
+                                <div class="d-flex justify-content-center ">
+                                    <button type="button" (click)="enviar()" [disabled]="formularioContacto.invalid " class="btn btn-success btn-block btn-lg gradient-custom-4 text-body ">Enviar comentario</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
