@@ -41,19 +41,16 @@ export class ControlAccesoService {
       }
     const httpHeaders=new HttpHeaders()
     httpHeaders.append('Access-Control-Allow-Origin','*');
-    //httpHeaders.append('Access-Control-Allow-Origin','*');
-    //httpHeaders.append('Content-Type','application/json')
     return this.http.post<AuthResponse>(direccionurl,bodypeticion,{ headers: httpHeaders});
   }
   obtenerUser(){
     let direccionurl="http://localhost:9000/user";
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     this.http.get(direccionurl,{headers :httpHeaders}).subscribe(resp=>{
-      console.log(resp);
+      let numero:string=String(resp);
+      localStorage.setItem('idusuario',numero);
     })
 
   }
-  enviarComentario(){
 
-  }
 }

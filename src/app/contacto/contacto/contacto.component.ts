@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ControlAccesoService } from 'src/app/control-acceso/services/control-acceso.service';
+import Swal from 'sweetalert2';
 import { ComentarioI } from '../interfaces/comentario.interface';
+import { ContactoserviceService } from '../services/contactoservice.service';
 
 @Component({
   selector: 'app-contacto',
@@ -15,19 +17,21 @@ export class ContactoComponent implements OnInit {
 
   constructor(  private router: Router,
     private authservice: ControlAccesoService,
-    private fb:FormBuilder) { }
+    private fb:FormBuilder,
+    private servicioContacto: ContactoserviceService) { }
 
   ngOnInit(): void {
     this.buildForm();
   }
 
   buildForm(){
+    let numero:number=Number(String(localStorage.getItem('idusuario')));
     this.formularioContacto=this.fb.group({
       email:['',[Validators.required,Validators.email]],
       telefono:['',[Validators.required,Validators.minLength(9)]],
       dni:['',[Validators.required,Validators.minLength(5),Validators.pattern("^[0-9]{8,8}[A-Za-z]$")]],
       contenidocomentario:['',[Validators.required,Validators.minLength(20)]],
-      usuario:Number(localStorage.getItem('idusuario'))
+      usuario:numero
     })
   }
 
@@ -38,24 +42,27 @@ export class ContactoComponent implements OnInit {
   }
 
   enviar(){
-     let comentario=this.formularioContacto.value;
-     console.log(comentario);
+     let comentario:ComentarioI=this.formularioContacto.value;
      this.authservice.obtenerUser();
-
-    if (this.formularioContacto.value && !this.formularioContacto.controls['email'].errors &&
-    !this.formularioContacto.controls['telefono'].errors && !this.formularioContacto.controls['email'].errors
-    && !this.formularioContacto.controls['dni'].errors && !this.formularioContacto.controls['contenidocomentario']){
-      // this.authservice.register(this.formularioContacto.value.email,this.formularioContacto.value.password,
-      //   this.formularioContacto.value.username,this.formularioContacto.value.name).subscribe({
-      //   next:(resp=>{
-      //     console.log(resp);
-      //     localStorage.setItem('token',resp.jwt_token!)
-      //     this.router.navigateByUrl('/home');
-      //   }),
-      //   error:resp=>{
-      //     console.log(resp);
-      //   }
-      // })
+    if (this.formularioContacto.value){
+      this.servicioContacto.enviarComentario(comentario).subscribe({
+        next:(resp=>{
+          Swal.fire({
+            title: 'Gracias',
+            text: 'Comentario enviado con exito',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          });
+        }),
+        error:resp=>{
+          Swal.fire({
+            title: resp.error.message,
+            text: 'Incorrecto',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });
+        }
+      });
     }
   }
 }

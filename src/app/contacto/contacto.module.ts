@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ControlAccesoModule } from '../control-acceso/control-acceso.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ContactoserviceService } from './services/contactoservice.service';
 
 
 @NgModule({
@@ -21,6 +22,6 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers:[ControlAccesoModule]
+  providers:[ControlAccesoModule,ContactoserviceService]
 })
 export class ContactoModule { }
