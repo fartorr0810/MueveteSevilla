@@ -46,7 +46,12 @@ export class RegisterComponent implements OnInit {
           this.router.navigateByUrl('/home');
         }),
         error:resp=>{
-          console.log(resp);
+          Swal.fire({
+            title: resp.error.message,
+            text: 'Email repetido',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          })
         }
       })
     }

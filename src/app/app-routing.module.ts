@@ -1,7 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { ContactoComponent } from './contacto/contacto/contacto.component';
 import { LoginComponent } from './control-acceso/login/login.component';
 import { RegisterComponent } from './control-acceso/register/register.component';
 import { HomeComponent } from './home/home/home.component';
@@ -25,8 +24,12 @@ const routes: Routes = [
      component:HomeComponent
    },
    {
-    path:'contacto',canActivate:[AuthGuard],
+    path:'contacto',
     loadChildren:()=> import('./contacto/contacto.module').then(m=>m.ContactoModule)
+   },
+   {
+    path:'listapatinetes',canActivate:[AuthGuard],
+    loadChildren:()=> import('./listar-patinete/listar-patinete.module').then(m=>m.ListarPatineteModule)
    },
   {
     path:'**',

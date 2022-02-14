@@ -10,6 +10,8 @@ import { HomeModule } from './home/home.module';
 import { AuthGuard } from './auth.guard';
 import { ContactoModule } from './contacto/contacto.module';
 import { SharedModule } from './shared/shared.module';
+import { ListarPatineteModule } from './listar-patinete/listar-patinete.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { SharedModule } from './shared/shared.module';
     ControlAccesoModule,
     HomeModule,
     ContactoModule,
-    SharedModule
+    SharedModule,
+    ListarPatineteModule,
   ],
   providers: [ControlAccesoService,AuthGuard],
   bootstrap: [AppComponent],

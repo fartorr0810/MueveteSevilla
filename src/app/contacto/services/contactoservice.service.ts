@@ -12,16 +12,13 @@ export class ContactoserviceService {
 
   enviarComentario(comentario:ComentarioI){
     let direccionurl="http://localhost:9000/comentario";
-    console.log(comentario);
     let bodypeticion={
       'email':comentario.email,
       'telefono':comentario.telefono,
-      'dni':comentario.dni,
       'contenidocomentario':comentario.contenidocomentario,
       'usuario':comentario.usuario
     }
-    console.log(bodypeticion);
-    const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
+    const httpHeaders=new HttpHeaders();
     return this.http.post<ComentarioI>(direccionurl,bodypeticion,{ headers: httpHeaders});
   }
 

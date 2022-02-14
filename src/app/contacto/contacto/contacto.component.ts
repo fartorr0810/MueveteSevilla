@@ -28,10 +28,8 @@ export class ContactoComponent implements OnInit {
     let numero:number=Number(String(localStorage.getItem('idusuario')));
     this.formularioContacto=this.fb.group({
       email:['',[Validators.required,Validators.email]],
-      telefono:['',[Validators.required,Validators.minLength(9)]],
-      dni:['',[Validators.required,Validators.minLength(5),Validators.pattern("^[0-9]{8,8}[A-Za-z]$")]],
+      telefono:['',[Validators.minLength(9)]],
       contenidocomentario:['',[Validators.required,Validators.minLength(20)]],
-      usuario:numero
     })
   }
 
@@ -43,7 +41,6 @@ export class ContactoComponent implements OnInit {
 
   enviar(){
      let comentario:ComentarioI=this.formularioContacto.value;
-     this.authservice.obtenerUser();
     if (this.formularioContacto.value){
       this.servicioContacto.enviarComentario(comentario).subscribe({
         next:(resp=>{

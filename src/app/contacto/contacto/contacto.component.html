@@ -19,15 +19,8 @@
 
                                 </div>
                                 <div class="form-outline mb-4 ">
-                                    <label class="form-label ">DNI</label>
-                                    <input type="email " formControlName="dni" class="form-control form-control-lg " required/>
-                                    <span class="form-text text-danger " *ngIf="campoEsValido('dni')">Debe introducir un DNI valido</span>
-
-                                </div>
-
-                                <div class="form-outline mb-4 ">
                                     <label class="form-label ">Comentario</label>
-                                    <input type="text " formControlName="contenidocomentario" class="form-control form-control-lg " required/>
+                                    <textarea cols="20" rows="10" formControlName="contenidocomentario" class="form-control form-control-lg " required></textarea>
                                     <span class="form-text text-danger " *ngIf="campoEsValido('contenidocomentario')">No puede dejar el comentario vacio</span>
 
                                 </div>
