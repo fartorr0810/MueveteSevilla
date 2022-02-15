@@ -1,17 +1,23 @@
-<div class="container" infiniteScroll [infiniteScrollDistance]="2" (scrolled)="onScroll()">
-    <h1 style="text-align: center">INFINITE SCROLL EXAMPLE</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col"><strong>TEXT</strong></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let line of linesToWrite; index as i">
-                <th scope="row">{{i}}</th>
-                <th scope="row">{{line}}</th>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+        <div class="row pt-5">
+            <div class="col-md-4 p-2" *ngFor="let patinete of listapatinetes">
+                <!-- single post card -->
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title text-center ">{{patinete.modelo}}</h5>
+                        <p class="card-text">{{patinete.kmhora}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- sinner -->
+    <!-- Alert no more post -->
+    <div *ngIf="!notEmptyPost" class="row pb-5">
+        <div class="col-md-12 d-flex justify-content-center">
+            <div class="text-muted h6 alert alert-secondary p-2">No more items to show</div>
+        </div>
+    </div>
 </div>
