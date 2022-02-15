@@ -34,11 +34,15 @@ export class ListapatineteComponent implements OnInit {
   allpost:any;
   notEmptyPost = true;
   notscrolly = true;
+  numbers: number[] = [];
 
    ngOnInit() {
      this.loadInitPost();
   }
   constructor(private servicioPatinete:PatineteService) {
+    for (let index = 0; index < 10000; index++) {
+      this.numbers.push(index);
+    }
   }
 
   loadInitPost() {

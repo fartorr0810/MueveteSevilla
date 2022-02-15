@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ListarPatineteRoutingModule } from './listar-patinete-routing.module';
 import { ListapatineteComponent } from './listapatinete/listapatinete.component';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HttpClientModule } from '@angular/common/http';
-
+import {ScrollingModule} from '@angular/cdk/scrolling'
 
 @NgModule({
   declarations: [
@@ -15,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     HttpClientModule,
-    InfiniteScrollModule,
+    ScrollingModule,
     ListarPatineteRoutingModule
   ],
   exports: [ListapatineteComponent]
