@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home/home.component';
 
 const routes: Routes = [
   {
-    path:'',canActivate:[AuthGuard],
+    path:'',
     loadChildren:()=> import('./shared/shared.module').then(m=> m.SharedModule)
   },
    {
