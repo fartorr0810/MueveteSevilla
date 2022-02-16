@@ -40,9 +40,6 @@ export class ListapatineteComponent implements OnInit {
      this.loadInitPost();
   }
   constructor(private servicioPatinete:PatineteService) {
-    for (let index = 0; index < 10000; index++) {
-      this.numbers.push(index);
-    }
   }
 
   loadInitPost() {
@@ -61,17 +58,5 @@ export class ListapatineteComponent implements OnInit {
       })
     })
  }
- onScroll() {
- if (this.notscrolly && this.notEmptyPost) {
-   this.notscrolly = false;
-   this.loadNextPost();
-  }
- }
- // load th next 6 posts
- loadNextPost() {
-   const lastPost = this.listapatinetes[this.listapatinetes.length - 1];
-  this.listapatinetes = this.listapatinetes.concat(this.listapatinetes);
-  this.notscrolly = true;
-    }
  }
 

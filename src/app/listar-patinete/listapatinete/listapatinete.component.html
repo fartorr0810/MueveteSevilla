@@ -1,15 +1,29 @@
 <div class="container">
+    <div class="search-results">
         <div class="row pt-5">
-          <cdk-virtual-scroll-viewport  style="height: 500px" itemSize="90" >
-            <ng-container *cdkVirtualFor="let patinete of listapatinetes">
-              <div class="card-body">
-                <h5 class="card-title text-center ">{{patinete.modelo}}</h5>
-                <p class="card-text">{{patinete.kmhora}}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="col-md-4 p-2" *ngFor="let patinete of listapatinetes">
+                <!-- single post card -->
+                <div class="card shadow">
+                    <div class="card">
+                        <div class="card-body mx-auto">
+                            <h5 class="card-title text-center">{{patinete.modelo}}</h5>
+                            <p class="card-text text-center">Velocidad maxima: {{patinete.kmhora}} km/h</p>
+                            <p class="card-text text-center"> El precio por hora es de: {{patinete.precioHora}} €</p>
+                            <img src="https://www.ciclados.com/web/image/product.template/199/image_256/Patinete%20el%C3%A9ctrico%20Wiizzee%20WS3?unique=25aada4" class="img-responsive" style="margin: auto;"><br>
+                            <div class="mx-auto col-6">
+                                <p class="btn btn-primary" *ngIf="patinete.disponible==true">Disponible</p>
+                                <p class="btn btn-danger" *ngIf="patinete.disponible==false">No Disponible</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </ng-container>
-          </cdk-virtual-scroll-viewport>
         </div>
-</div>
-
-
+        <!-- sinner -->
+        <!-- Alert no more post -->
+        <div *ngIf="!notEmptyPost" class="row pb-5">
+            <div class="col-md-12 d-flex justify-content-center">
+                <div class="text-muted h6 alert alert-secondary p-2">No more items to show</div>
+            </div>
+        </div>
+    </div>

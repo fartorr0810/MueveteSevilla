@@ -11,6 +11,7 @@ import { AuthGuard } from './auth.guard';
 import { ContactoModule } from './contacto/contacto.module';
 import { SharedModule } from './shared/shared.module';
 import { ListarPatineteModule } from './listar-patinete/listar-patinete.module';
+import { ReservaModule } from './reserva/reserva.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ListarPatineteModule } from './listar-patinete/listar-patinete.module';
     ContactoModule,
     SharedModule,
     ListarPatineteModule,
+    ReservaModule
   ],
   providers: [ControlAccesoService,AuthGuard],
   bootstrap: [AppComponent],

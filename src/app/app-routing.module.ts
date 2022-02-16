@@ -31,6 +31,10 @@ const routes: Routes = [
     path:'listapatinetes',canActivate:[AuthGuard],
     loadChildren:()=> import('./listar-patinete/listar-patinete.module').then(m=>m.ListarPatineteModule)
    },
+   {
+    path:'reserva',canActivate:[AuthGuard],
+    loadChildren:()=> import('./reserva/reserva.module').then(m=>m.ReservaModule)
+   },
   {
     path:'**',
     redirectTo:'home'
