@@ -4,3 +4,10 @@ export interface AlquilerI{
   patinete:number,
   user:number
 }
+export interface CalcularAlquiler{
+  horaentrega:string,
+  horasalquiler:number,
+  patinete:number,
+  horarecogida:string,
+  preciototal:number
+}

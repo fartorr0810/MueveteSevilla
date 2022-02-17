@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
         }),
         catchError( err => {
             Swal.fire({
-              title: 'El token ha expirado, renuevalo',
+              title: err.error.message,
               text: 'Inicia sesion',
               icon: 'error',
               confirmButtonText: 'Ok'

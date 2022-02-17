@@ -15,13 +15,14 @@ import { AlquilerService } from '../services/alquiler.service';
 export class ReservaComponent implements OnInit {
   formularioContacto!:FormGroup;
   listapatinetesDisponibles: Patinete[] = [];
-  seleccion!:number;
-
+  precio!:number;
+  horadevolucion!:string;
+  fechaahora = new Date().toJSON().slice(0,18);
 
   constructor(private router: Router,
     private authservice: ControlAccesoService,
     private fb:FormBuilder,
-    private servicioContacto: AlquilerService) { }
+    private servicioAlquiler: AlquilerService) { }
 
   async ngOnInit() {
     this.buildForm();
@@ -36,7 +37,7 @@ export class ReservaComponent implements OnInit {
       horaentrega:['',[Validators.required]],
       horasalquiler:['',[Validators.required,Validators.min(0)]],
       confirmacion:[false,[Validators.required]],
-      user:[localStorage.getItem("idusuario"),],
+      user:[localStorage.getItem("idusuario")],
     })
   }
 
@@ -46,10 +47,16 @@ export class ReservaComponent implements OnInit {
   }
   calcularPrecioYFecha(){
     const alquiler=this.formularioContacto.value;
-    console.log(alquiler.patinete);
+    this.servicioAlquiler.calcularPrecioYFecha(alquiler).subscribe({
+      next:(resp)=>{
+        this.precio=resp.preciototal;
+        this.horadevolucion=resp.horarecogida;
+      }
+      })
+
   }
   patinetesDisponibles(){
-    this.servicioContacto.obtenerPatinetesDisponibles().subscribe({
+    this.servicioAlquiler.obtenerPatinetesDisponibles().subscribe({
       next:(resp)=>{
         this.listapatinetesDisponibles=resp;
       },
@@ -66,11 +73,22 @@ export class ReservaComponent implements OnInit {
   alquilar(){
     const alquiler=this.formularioContacto.value;
     console.log(alquiler);
-    this.servicioContacto.alquilarPatinete(alquiler).subscribe({
+    this.servicioAlquiler.alquilarPatinete(alquiler).subscribe({
     next:(resp=>{
+      Swal.fire({
+        title: 'Gracias',
+        text: 'Patinete alquilado con exito',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
     }),
     error:resp=>{
-
+      Swal.fire({
+        title: 'Lo sentimos',
+        text: 'Este patinete ya ha sido alquilado',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
     }
   })
   }

@@ -8,7 +8,7 @@
                         <div class="form-group col-md-6">
                             <label for="ejemplo_email_3" class="col-lg-5 control-label">Elige tu patinete</label>
                             <div class="col-lg-5">
-                                <select class="form-control" [(ngModel)]="seleccion" formControlName="patinete">
+                                <select class="form-control" formControlName="patinete">
                           <option [value]="patinete.idpatinete" *ngFor="let patinete of listapatinetesDisponibles">
                             {{patinete.modelo}}</option>
 
@@ -28,13 +28,13 @@
                         <div class="form-group col-md-6">
                             <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha entrega</label>
                             <div class="col-lg-5">
-                                <input type="datetime-local" formControlName="horaentrega" class="form-control" required>
+                                <input type="datetime-local"  min="{{fechaahora}}" formControlName="horaentrega" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha devolucion</label>
-                            <div class="col-lg-5">
-                                <p>Esto es una prueba</p>
+                            <label class="col-lg-5 control-label">Fecha devolucion</label>
+                            <div class="col-lg-5" *ngIf="this.horadevolucion!=null">
+                                <input type="datetime-local" readonly="readonly" [value]="this.horadevolucion">
                             </div>
                         </div>
                     </div>
@@ -50,10 +50,9 @@
                         </div>
                         <div class="form-group col-md-6">
                             <div class="col-lg-5">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <label class="form-check-label" for="flexCheckDefault">
-                            Deseo recibir avisos
-                          </label>
+                              <div class="col-lg-5" *ngIf="this.precio!=null">
+                                <input type="text" class="form-control" readonly="readonly" [value]="this.precio"> €
+                            </div>
                             </div>
                         </div>
                     </div>
