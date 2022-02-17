@@ -1,75 +1,77 @@
 <div class="container">
-  <div class="card card-body">
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        <h1>RESERVA TU PATINETE</h1>
-          <form id="form" class="form-horizontal" #formulario="ngForm">
-              <div class="row">
-                <div class="form-group col-md-6">
-                      <label for="ejemplo_email_3" class="col-lg-5 control-label" name="nombre">Elige tu patinete</label>
-                      <div class="col-lg-5">
-                        <select class="form-control" name="" id="">
-                          <option value="prueba">prueba</option>
+    <div class="card card-body">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <h1>RESERVA TU PATINETE</h1>
+                <form class="form-horizontal" [formGroup]="formularioContacto">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="ejemplo_email_3" class="col-lg-5 control-label">Elige tu patinete</label>
+                            <div class="col-lg-5">
+                                <select class="form-control" [(ngModel)]="seleccion" formControlName="patinete">
+                          <option [value]="patinete.idpatinete" *ngFor="let patinete of listapatinetesDisponibles">
+                            {{patinete.modelo}}</option>
+
                         </select>
-                        <span class="help-block"></span>
-                      </div>
-                  </div>
-                  <div class="form-group col-md-6">
-                      <label for="ejemplo_email_3" class="col-lg-5 control-label">¿Cuantas horas?</label>
-                      <div class="col-lg-5">
-                        <input type="number" id="horas" name="horas" class="form-control" required>
-                      </div>
-                  </div>
-                </div>
-                <br>
-              <div class="row">
-                  <div class="form-group col-md-6">
-                    <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha entrega</label>
-                      <div class="col-lg-5">
-                        <input type="datetime-local" id="fechaentrega" name="fechaentrega" class="form-control" required>
+                                <span class="help-block"></span>
+                            </div>
                         </div>
-                      </div>
-                  <div class="form-group col-md-6">
-                      <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha devolucion</label>
-                      <div class="col-lg-5">
-                        <input type="datetime-local" id="fechadevolucion" name="fechadevolucion" class="form-control" required>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="form-group col-md-6">
-                        <div class="col-lg-5">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                              Acepto terminos
-                          </label>
+                        <div class="form-group col-md-6">
+                            <label for="ejemplo_email_3" class="col-lg-5 control-label">¿Cuantas horas?</label>
+                            <div class="col-lg-5">
+                                <input type="number" formControlName="horasalquiler" class="form-control" required>
+                            </div>
                         </div>
-                        </div>
-                    <div class="form-group col-md-6">
-                        <div class="col-lg-5">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Deseo recibir avisos
-                          </label>
-                    </div>
-                      </div>
                     </div>
                     <br>
-                <div class="row">
-                  <div class="col-sm-offset-5 col-sm-2 text-center">
-                      <div class="btn-group" data-toggle="buttons">
-                          <button (click)="alquilar()" [disabled]="formularioContacto.invalid" type="button" id="btn_enviar" class="btn btn-primary">Enviar</button>
-                      </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha entrega</label>
+                            <div class="col-lg-5">
+                                <input type="datetime-local" formControlName="horaentrega" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha devolucion</label>
+                            <div class="col-lg-5">
+                                <p>Esto es una prueba</p>
+                            </div>
+                        </div>
                     </div>
-                  <div class="col-sm-offset-5 col-sm-2 text-center">
-                      <div class="btn-group" data-toggle="buttons">
-                          <button (click)="calcularPrecioYFecha()" [disabled]="formularioContacto.invalid" type="button" id="btn_enviar" class="btn btn-primary">Calcular Precio</button>
-                      </div>
+                    <br>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <div class="col-lg-5">
+                                <input class="form-check-input" type="checkbox" formControlName="confirmacion">
+                                <label class="form-check-label" for="flexCheckDefault">
+                              Acepto terminos
+                          </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="col-lg-5">
+                                <input class="form-check-input" type="checkbox" value="">
+                                <label class="form-check-label" for="flexCheckDefault">
+                            Deseo recibir avisos
+                          </label>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-offset-5 col-sm-2 text-center">
+                            <div class="btn-group" data-toggle="buttons">
+                                <button (click)="alquilar()" [disabled]="formularioContacto.invalid" type="button" id="btn_enviar" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-offset-5 col-sm-2 text-center">
+                            <div class="btn-group" data-toggle="buttons">
+                                <button (click)="calcularPrecioYFecha()" [disabled]="formularioContacto.invalid" type="button" id="btn_enviar" class="btn btn-primary">Calcular Precio</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
-              </div>
             </div>
-  </div>
+        </div>
+    </div>
 </div>
