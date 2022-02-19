@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Patinete } from 'src/app/listar-patinete/interfaces/patinete.interface';
@@ -39,5 +39,13 @@ export class AlquilerService {
     let direccionurl="http://localhost:9000/patinete?filtro=disponible";
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     return this.http.get<Patinete[]>(direccionurl,{ headers: httpHeaders});
+  }
+
+  getListaAlquilerUsuario(){
+    const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
+    let idusuario=localStorage.getItem('idusuario')!;
+    const httpParams=new HttpParams().set('id',idusuario);
+    let direccionurl="http://localhost:9000/alquiler/"+idusuario;
+    return this.http.get<AlquilerI[]>(direccionurl,{headers:httpHeaders,params:httpParams});
   }
 }

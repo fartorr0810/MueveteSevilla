@@ -12,6 +12,7 @@ import { ContactoModule } from './contacto/contacto.module';
 import { SharedModule } from './shared/shared.module';
 import { ListarPatineteModule } from './listar-patinete/listar-patinete.module';
 import { ReservaModule } from './reserva/reserva.module';
+import { ListarAlquilerModule } from './listar-alquiler/listar-alquiler.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReservaModule } from './reserva/reserva.module';
     AppRoutingModule,
     FormsModule,
     ControlAccesoModule,
+    ListarAlquilerModule,
     HomeModule,
     ContactoModule,
     SharedModule,

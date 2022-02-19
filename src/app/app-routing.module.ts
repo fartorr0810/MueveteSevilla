@@ -35,6 +35,10 @@ const routes: Routes = [
     path:'reserva',canActivate:[AuthGuard],
     loadChildren:()=> import('./reserva/reserva.module').then(m=>m.ReservaModule)
    },
+   {
+    path:'alquiler',canActivate:[AuthGuard],
+    loadChildren:()=> import('./listar-alquiler/listar-alquiler.module').then(m=>m.ListarAlquilerModule)
+   },
   {
     path:'**',
     redirectTo:'home'
