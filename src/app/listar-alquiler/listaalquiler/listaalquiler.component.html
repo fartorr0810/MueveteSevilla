@@ -1,1 +1,26 @@
-<p>listaalquiler works!</p>
+<div class="table-responsive">
+  <table class="table" datatable [dtOptions]="opcionesDataTables" [dtTrigger]="triggerDatatables">
+      <thead>
+          <tr>
+              <th>ID Alquiler</th>
+              <th>Fecha Entrega</th>
+              <th>Horas Alquiler</th>
+              <th>Fecha Devolucion</th>
+              <th>Modelo Patinete</th>
+              <th>Precio Total</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let alquiler of listadealquileres">
+              <td>{{alquiler.idalquiler}}</td>
+              <td>{{alquiler.horaentrega | date: "dd-MM-yyyy HH:MM"}}</td>
+              <td>{{alquiler.horasalquiler | number }}</td>
+              <td>{{alquiler.horarecogida | date: "dd-MM-yyyy HH:MM"}}</td>
+              <td>{{alquiler.modelo}}</td>
+              <td>{{alquiler.preciototal}} €</td>
+              <td><button class="btn btn-success">Entregar Patinete</button></td>
+          </tr>
+      </tbody>
+  </table>
+</div>

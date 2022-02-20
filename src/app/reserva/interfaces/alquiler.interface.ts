@@ -11,3 +11,14 @@ export interface CalcularAlquiler{
   horarecogida:string,
   preciototal:number
 }
+export interface ListaAlquilerI{
+  idalquiler:number,
+  horaentrega:string,
+  modelo:string,
+  horasalquiler:number,
+  preciototal:string,
+  horarecogida:string,
+  entregado:boolean
+}
+
+

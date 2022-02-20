@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Patinete } from 'src/app/listar-patinete/interfaces/patinete.interface';
-import { AlquilerI, CalcularAlquiler } from '../interfaces/alquiler.interface';
+import { AlquilerI, CalcularAlquiler, ListaAlquilerI } from '../interfaces/alquiler.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +46,6 @@ export class AlquilerService {
     let idusuario=localStorage.getItem('idusuario')!;
     const httpParams=new HttpParams().set('id',idusuario);
     let direccionurl="http://localhost:9000/alquiler/"+idusuario;
-    return this.http.get<AlquilerI[]>(direccionurl,{headers:httpHeaders,params:httpParams});
+    return this.http.get<ListaAlquilerI[]>(direccionurl,{headers:httpHeaders,params:httpParams});
   }
 }
