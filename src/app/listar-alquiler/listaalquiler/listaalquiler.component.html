@@ -23,7 +23,7 @@
                 <td>{{alquiler.horarecogida | date: "dd-MM-yyyy HH:MM"}}</td>
                 <td>{{alquiler.modelo}}</td>
                 <td>{{alquiler.preciototal}} €</td>
-                <td><button class="btn btn-success">Entregar Patinete</button></td>
+                <td><button (click)="entregarPatinetes(alquiler.idalquiler)" class="btn btn-success">Entregar Patinete</button></td>
             </tr>
         </tbody>
     </table>

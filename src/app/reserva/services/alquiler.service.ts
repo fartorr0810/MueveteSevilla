@@ -34,7 +34,12 @@ export class AlquilerService {
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     return this.http.post<CalcularAlquiler>(direccionurl,bodypeticion,{ headers: httpHeaders});
   }
+  entregarPatinete(idalquiler:number){
+    let direccionurl="http://localhost:9000/patiente/"+idalquiler;
+    const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
+    return this.http.post(direccionurl,{ headers: httpHeaders});
 
+  }
   obtenerPatinetesDisponibles():Observable<Patinete[]>{
     let direccionurl="http://localhost:9000/patinete?filtro=disponible";
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
