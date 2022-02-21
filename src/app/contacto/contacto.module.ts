@@ -9,7 +9,7 @@ import { ControlAccesoModule } from '../control-acceso/control-acceso.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactoserviceService } from './services/contactoservice.service';
 
-
+//Importamos los modules necesarios y proveedores
 @NgModule({
   declarations: [
     ContactoComponent

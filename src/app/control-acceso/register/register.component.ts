@@ -10,16 +10,20 @@ import { ControlAccesoService } from '../services/control-acceso.service';
   styles: [
   ]
 })
+/**
+ * Clase register
+ */
 export class RegisterComponent implements OnInit {
-
+  //Formulario
   formulario!:FormGroup;
+  //Constructor donde inyectamos el formbuilder y el authservice
   constructor(private formBuilder: FormBuilder,private authservice: ControlAccesoService,
     private router:Router) { }
 
   ngOnInit(): void {
     this.buildForm();
   }
-
+//Metodo en el que indicamos los requisitos de cada campo y se construye el formulario
   buildForm(){
     this.formulario=this.formBuilder.group({
       name:['',[Validators.required,Validators.minLength(4)]],
@@ -28,11 +32,23 @@ export class RegisterComponent implements OnInit {
       password:['',[Validators.required,Validators.minLength(8)]]
     })
   }
-
+/**
+ * Comprueba que el campo que se introduce es valido o no y devuelve true o false
+ * @param campo campo que se le introduce
+ * @returns  devuelve true o false
+ */
   campoEsValido(campo:string) {
     return this.formulario.controls[campo].errors
             && this.formulario.controls[campo].touched;
   }
+  /**
+   *Metodo para registrar un usuario, mete en una variable los datos del formulario.
+   Comprueba que todos los campos que se introducen son correctos. Luego llama al servicio
+   al metodo register con los campos necesarios que se requieren subscribiendonos y una vez todo
+   se haya resuelto correctamente, almacenamos en el localstorage el token.
+   Si el email introducido es email pero existe en la base de datos, nos devolvera un mensaje
+   de error con que ese email esta ya utilizado,
+   */
   register(){
     const user=this.formulario.value;
     if (this.formulario.value && !this.formulario.controls['name'].errors &&
@@ -41,7 +57,6 @@ export class RegisterComponent implements OnInit {
       this.authservice.register(this.formulario.value.email,this.formulario.value.password,
         this.formulario.value.username,this.formulario.value.name).subscribe({
         next:(resp=>{
-          console.log(resp);
           localStorage.setItem('token',resp.jwt_token!);
           this.router.navigateByUrl('/home');
         }),

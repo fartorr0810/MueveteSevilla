@@ -10,17 +10,21 @@ import { ControlAccesoService } from '../services/control-acceso.service';
   styles: [
   ]
 })
+/**
+ * Clase Login
+ */
 export class LoginComponent implements OnInit {
-
+  //Formulario que construimos
   formulario:FormGroup=this.fb.group({
     email:!['',[Validators.required,Validators.email]],
     password:!['',[Validators.required,Validators.minLength(5)]]
   })
-
+//Usuario con los campos necesarios
   usuario: UsuarioLogin={
     email:'',
     password:''
   }
+  //Constructor donde inyectamos lo que necesitamos
   constructor(
       private router: Router,
       private authservice: ControlAccesoService,
@@ -29,9 +33,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+/**
+ * Metodo login , en caso de que los formularios tenga valores, se llamara al servicio authservice
+ * y llamaremos al metodo login y le pasaremos los campos necesarios, nos suscribiremos
+ * y si es correcto , nos guardara en el localstorage el token que nos devolvera y nos llevara
+ * al componente home.
+ * Si hay algun error , se mostrara al usuario un mensaje de error.
+ */
   login(){
-    console.log(this.formulario.value);
     if (this.formulario.value){
       this.authservice.login(this.usuario.email,this.usuario.password).subscribe({
         next:(resp=>{

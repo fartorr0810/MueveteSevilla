@@ -7,9 +7,10 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-
+//Constructor donde inyectamos el servicio de control de acceso y el router
   constructor(private serviciocontrol:ControlAccesoService, private router:Router){}
-
+//Protegemos las rutas llamando al metodo de comprobar tokenn, si no hay token o no es valido
+//o a cumplido, nos llevara a la pantalla de login
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree| any {

@@ -11,15 +11,22 @@ import Swal from 'sweetalert2';
   styles: [
   ]
 })
+/**
+ * Clase para ListarAlquileres
+ */
 export class ListaalquilerComponent implements OnInit {
-
+  //Atributos necesarios
   listadealquileres:ListaAlquilerI[]=[];
   opcionesDataTables: DataTables.Settings={}
   triggerDatatables:Subject<any> = new Subject<any>();
   isEmpty:boolean = true;
-
+  //Constructor donde inyectamos lo que necesitamos, en este caso el servicio de alquiler
   constructor(private router:Router,private servicioAlquiler:AlquilerService) { }
-
+  /**
+  * ngOnInit donde llamamos al metodo donde obtenemos la lista de todos los patinetes disponibles
+  * para que el usuario no alquile uno que no esta disponible,
+  * Tambien indicamos las opciones del DataTable
+  */
   ngOnInit(): void {
     this.obtenerListaAlquileres();
     this.opcionesDataTables={
@@ -27,12 +34,16 @@ export class ListaalquilerComponent implements OnInit {
       pageLength:10
     }
   }
-
+/**
+ * Metodo donde obtenemos la lista de alquileres, subscribiendonos a la peticion
+ * que hacemos en el servicio de alquiler, igualamos la respuesta, comprobamos
+ * que la lista este vacia o no para mostrar un mensaje de alerta o no. y si no le pasamos
+ * la respuesta al disparador declarado anteriormente.
+ */
   obtenerListaAlquileres(){
     this.servicioAlquiler.getListaAlquilerUsuario().subscribe({
       next:(resp)=> {
         this.listadealquileres=resp;
-        console.log(resp)
         if(this.listadealquileres.length==0){
           Swal.fire({
             title: 'No tiene alquileres realizados',

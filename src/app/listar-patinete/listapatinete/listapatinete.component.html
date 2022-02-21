@@ -1,8 +1,8 @@
 <div class="container">
     <div class="search-results">
         <div class="row pt-5">
+            <!--Recorremos la lista de patinetes mostrando un card de cada uno-->
             <div class="col-md-4 p-2" *ngFor="let patinete of listapatinetes">
-                <!-- single post card -->
                 <div class="card shadow">
                     <div class="card">
                         <div class="card-body mx-auto">
@@ -19,11 +19,10 @@
                 </div>
             </div>
         </div>
-        <!-- sinner -->
-        <!-- Alert no more post -->
+        <!--Si no hay patinetes se muestra -->
         <div *ngIf="!notEmptyPost" class="row pb-5">
             <div class="col-md-12 d-flex justify-content-center">
-                <div class="text-muted h6 alert alert-secondary p-2">No more items to show</div>
+                <div class="text-muted h6 alert alert-secondary p-2">No hay patinetes disponibles</div>
             </div>
         </div>
     </div>

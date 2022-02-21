@@ -5,7 +5,7 @@ import { ReservaRoutingModule } from './reserva-routing.module';
 import { ReservaComponent } from './reserva/reserva.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+//Importamos lo necesario.
 @NgModule({
   declarations: [
     ReservaComponent

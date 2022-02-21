@@ -10,38 +10,28 @@ import { PatineteService } from '../services/patinete.service';
   styles: [
   ]
 })
+/**
+ * Clase de ListarPatinetes
+ */
 export class ListapatineteComponent implements OnInit {
-
-  // linesToWrite!: Array<string>;
-  // finishPage = 5;
-  // actualPage!: number;
-  // listapatinetes: Patinete[] = [];
-
-
-  // ngOnInit() {
-  // }
-
-
-  // onScroll() {
-  //   if (this.actualPage < this.finishPage) {
-  //     this.actualPage ++;
-  //   } else {
-  //     console.log('No more lines. Finish page!');
-  //   }
-  // }
-
+//Atrivutos necesarios
   listapatinetes: Patinete[] = [];
   allpost:any;
   notEmptyPost = true;
   notscrolly = true;
   numbers: number[] = [];
 
+  //Llamamos a cargar los patinetes
    ngOnInit() {
      this.loadInitPost();
   }
+  //Constructor donde inyectamos el servicio de patinetes
   constructor(private servicioPatinete:PatineteService) {
   }
-
+/**
+ * Llamamos a obtenerPatinetes que esta en el servicio de Patintetes, si no hay patinetes
+ * mostramos un alert con que no hay patinetes no estan disponibles
+ */
   loadInitPost() {
     this.servicioPatinete.obtenerPatinetes()
     .subscribe({

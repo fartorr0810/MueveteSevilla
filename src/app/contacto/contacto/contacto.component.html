@@ -6,20 +6,25 @@
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Contacta con nosotros</h2>
+                            <!--Declaramos el formulario con FormGroup y le indicamos el nombre-->
+                            <!--Span que salta si el campo es invalido-->
                             <form [formGroup]="formularioContacto">
                                 <div class="form-outline mb-4">
                                     <label class="form-label">Email</label>
+                                    <!--Input con el campo email-->
                                     <input type="text" formControlName="email" class="form-control form-control-lg" required/>
                                     <span class="form-text text-danger" *ngIf="campoEsValido('email')">Debe introducir un email valido</span>
                                 </div>
                                 <div class="form-outline mb-4 ">
                                     <label class="form-label ">Telefono</label>
+                                    <!--Input con el campo telefono-->
                                     <input type="text " formControlName="telefono" class="form-control form-control-lg " required />
                                     <span class="form-text text-danger " *ngIf="campoEsValido('telefono')">Debe introducir un numero de telefono valido</span>
 
                                 </div>
                                 <div class="form-outline mb-4 ">
                                     <label class="form-label ">Comentario</label>
+                                    <!--Input con el campo contenidocomentario-->
                                     <textarea cols="20" rows="10" formControlName="contenidocomentario" class="form-control form-control-lg " required></textarea>
                                     <span class="form-text text-danger " *ngIf="campoEsValido('contenidocomentario')">No puede dejar el comentario vacio</span>
 

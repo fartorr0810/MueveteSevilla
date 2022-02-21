@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReservaComponent } from './reserva/reserva.component';
-
+//Rutas
 const routes: Routes = [
   {
     path:'',

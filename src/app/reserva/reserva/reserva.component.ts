@@ -12,23 +12,29 @@ import { AlquilerService } from '../services/alquiler.service';
   styles: [
   ]
 })
+/**
+ * clase con la reserva
+ */
 export class ReservaComponent implements OnInit {
+  //Atributos
   formularioContacto!:FormGroup;
   listapatinetesDisponibles: Patinete[] = [];
   precio!:number;
   horadevolucion!:string;
   fechaahora = new Date().toJSON().slice(0,18);
-
+//Constructor donde inyectamos lo necesario
   constructor(private router: Router,
     private authservice: ControlAccesoService,
     private fb:FormBuilder,
     private servicioAlquiler: AlquilerService) { }
-
+//NgOnInit  donde se construye el formulario, busca los patinetes disponibles , obtenemos el usuario
+//al que pertenece el usuario
   async ngOnInit() {
     this.buildForm();
     this.patinetesDisponibles();
     this.authservice.obtenerUser();
   }
+//Metodo en el que indicamos los requisitos de cada campo y se construye el formulario
 
   buildForm(){
     let numero:number=Number(String(localStorage.getItem('idusuario')));
@@ -40,11 +46,20 @@ export class ReservaComponent implements OnInit {
       user:[localStorage.getItem("idusuario")],
     })
   }
-
+/**
+ * Comprueba que el campo que se introduce es valido o no y devuelve true o false
+ * @param campo campo que se le introduce
+ * @returns  devuelve true o false
+ */
   campoEsValido(campo:string) {
     return this.formularioContacto.controls[campo].errors
             && this.formularioContacto.controls[campo].touched;
   }
+  /**
+   * Metodo para calcular el precio y la fecha de un alquiler llamando al servicio alquiler
+   * y asigna los resultados a los atributos mencionados anteriormente y se volveran visibles
+   * en el html.
+   */
   calcularPrecioYFecha(){
     const alquiler=this.formularioContacto.value;
     this.servicioAlquiler.calcularPrecioYFecha(alquiler).subscribe({
@@ -55,6 +70,10 @@ export class ReservaComponent implements OnInit {
       })
 
   }
+  /**
+   * Metodo que carga todos los patinetes disponibles, si no hay patinetes
+   * disponibles mostrara un mensaje de error que nos dira que no hay patinetes disponibles.
+   */
   patinetesDisponibles(){
     this.servicioAlquiler.obtenerPatinetesDisponibles().subscribe({
       next:(resp)=>{
@@ -70,9 +89,13 @@ export class ReservaComponent implements OnInit {
       }
     });
   }
+  /**
+   *Metodo alquilar , recoge los datos del formulario los pasa al servicio , nos suscribimos
+   a la peticion y nos muestra si se anade correctamente el alquiler una alerta con que
+   nuestro patinete se alquilado correctamente. Si hay algun problema , nos mostrara un mensaje de error
+   */
   alquilar(){
     const alquiler=this.formularioContacto.value;
-    console.log(alquiler);
     this.servicioAlquiler.alquilarPatinete(alquiler).subscribe({
     next:(resp=>{
       Swal.fire({

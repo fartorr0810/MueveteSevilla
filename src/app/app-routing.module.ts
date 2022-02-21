@@ -4,7 +4,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './control-acceso/login/login.component';
 import { RegisterComponent } from './control-acceso/register/register.component';
 import { HomeComponent } from './home/home/home.component';
-
+//Rutas con LazyLoading
 const routes: Routes = [
   {
     path:'',

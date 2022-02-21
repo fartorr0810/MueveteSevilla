@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListaalquilerComponent } from './listaalquiler/listaalquiler.component';
-
+//Rutas
 const routes: Routes = [
   {
     path:'',
