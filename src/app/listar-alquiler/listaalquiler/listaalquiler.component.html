@@ -15,15 +15,15 @@
         <!--Recorremos con un For la respuesta-->
         <tbody>
             <tr *ngFor="let alquiler of listadealquileres">
-                <td>{{alquiler.idalquiler}}</td>
+                <td *ngIf="!alquiler.entregado">{{alquiler.idalquiler}}</td>
                 <!--Formateamos la fecha-->
-                <td>{{alquiler.horaentrega | date: "dd-MM-yyyy HH:MM"}}</td>
+                <td *ngIf="!alquiler.entregado">{{alquiler.horaentrega | date: "dd-MM-yyyy HH:MM"}}</td>
                 <!--Formateamos los numeros-->
-                <td>{{alquiler.horasalquiler | number }}</td>
-                <td>{{alquiler.horarecogida | date: "dd-MM-yyyy HH:MM"}}</td>
-                <td>{{alquiler.modelo}}</td>
-                <td>{{alquiler.preciototal}} €</td>
-                <td><button (click)="entregarPatinetes(alquiler.idalquiler)" class="btn btn-success">Entregar Patinete</button></td>
+                <td *ngIf="!alquiler.entregado">{{alquiler.horasalquiler | number }}</td>
+                <td *ngIf="!alquiler.entregado">{{alquiler.horarecogida | date: "dd-MM-yyyy HH:MM"}}</td>
+                <td *ngIf="!alquiler.entregado">{{alquiler.modelo}}</td>
+                <td *ngIf="!alquiler.entregado">{{alquiler.preciototal}} €</td>
+                <td *ngIf="!alquiler.entregado"><button (click)="entregarPatinetes(alquiler.idalquiler)" class="btn btn-success">Entregar Patinete</button></td>
             </tr>
         </tbody>
     </table>

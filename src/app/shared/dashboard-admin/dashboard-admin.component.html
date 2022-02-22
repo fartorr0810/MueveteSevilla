@@ -1,0 +1,30 @@
+<header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center gx-0">
+        <div class="col-2 pt-1">
+            <div class="col-6">
+                <img src="../../../assets/img/logo.png" class="img-thumbnail" alt="" srcset="">
+            </div>
+        </div>
+        <div class="col-6 text-left">
+            <h2> Bienvenido Admin</h2>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="btn btn-sm btn-outline-secondary" [routerLink]="['login']" routerLinkActive="router-link-active">
+                <h5>Login</h5>
+            </a>
+        </div>
+    </div>
+</header>
+<div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+        <li class="p-2"><a class="nav-link h4 text-dark" [routerLink]="['home']" routerLinkActive="router-link-active">Home</a></li>
+        <a class="p-2 text-muted" href="#"></a>
+        <li class="p-2"><a class="nav-link h4 text-dark" [routerLink]="['reserva']" routerLinkActive="router-link-active">Reservar Patinete</a></li>
+        <a class="p-2 text-muted" href="#"></a>
+        <li class="p-2"><a class="nav-link h4 text-dark" [routerLink]="['alquiler']" routerLinkActive="router-link-active">Listar Alquileres</a></li>
+        <a class="p-2 text-muted" href="#"></a>
+        <li class="p-2"><a class="nav-link h4 text-dark" [routerLink]="['listapatinetes']" routerLinkActive="router-link-active">Ver Flota Disponible</a></li>
+        <a class="p-2 text-muted" href="#"></a>
+        <li class="p-2"><a class="nav-link h4 text-dark" [routerLink]="['contacto']" routerLinkActive="router-link-active">Contacto</a></li>
+    </nav>
+</div>

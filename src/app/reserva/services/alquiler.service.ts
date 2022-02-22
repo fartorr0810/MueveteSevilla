@@ -35,9 +35,9 @@ export class AlquilerService {
     return this.http.post<CalcularAlquiler>(direccionurl,bodypeticion,{ headers: httpHeaders});
   }
   entregarPatinete(idalquiler:number){
-    let direccionurl="http://localhost:9000/patiente/"+idalquiler;
+    let direccionurl="http://localhost:9000/alquiler/"+idalquiler;
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
-    return this.http.post(direccionurl,{ headers: httpHeaders});
+    return this.http.put(direccionurl,{ headers: httpHeaders});
 
   }
   obtenerPatinetesDisponibles():Observable<Patinete[]>{
