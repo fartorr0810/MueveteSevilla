@@ -45,9 +45,9 @@ export class LoginComponent implements OnInit {
       this.authservice.login(this.usuario.email,this.usuario.password).subscribe({
         next:(resp=>{
           localStorage.setItem('token',resp.jwt_token!)
+          localStorage.setItem('idusuario',resp.idusuario!)
+          localStorage.setItem('rol',resp.rol)
           this.router.navigateByUrl('/home');
-          this.authservice.obtenerUser();
-          this.authservice.obtenerRol();
         }),
         error:resp=>{
           Swal.fire({

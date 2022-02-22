@@ -57,7 +57,9 @@ export class RegisterComponent implements OnInit {
       this.authservice.register(this.formulario.value.email,this.formulario.value.password,
         this.formulario.value.username,this.formulario.value.name).subscribe({
         next:(resp=>{
-          localStorage.setItem('token',resp.jwt_token!);
+          localStorage.setItem('token',resp.jwt_token!)
+          localStorage.setItem('idusuario',resp.idusuario!)
+          localStorage.setItem('rol',resp.rol)
           this.router.navigateByUrl('/home');
         }),
         error:resp=>{

@@ -16,7 +16,8 @@ import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.compo
     RouterModule
   ],
   exports: [
-    DashboardComponent
+    DashboardComponent,
+    DashboardAdminComponent
   ]
 })
 export class SharedModule { }

@@ -1,6 +1,9 @@
 <!--Dashboard-->
-<div class="row gx-0">
+<div class="row gx-0" *ngIf="roldelusuario!='Admin'">
     <app-dashboard></app-dashboard>
+</div>
+<div class="row gx-0" *ngIf="roldelusuario=='Admin'">
+    <app-dashboard-admin></app-dashboard-admin>
 </div>
 <!--Rutas Outler-->
 <div class="row gx-0">

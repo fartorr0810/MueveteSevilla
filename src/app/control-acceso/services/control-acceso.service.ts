@@ -77,13 +77,12 @@ export class ControlAccesoService {
     })
   }
   obtenerRol(){
-    let id:string=localStorage.getItem('idusuario')!;
+    let id:string=localStorage.getItem("idusuario")!;
     console.log(id);
     let direccionurl="http://localhost:9000/user/"+id;
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     this.http.get(direccionurl,{headers :httpHeaders}).subscribe(resp=>{
-      let rol:string=String(resp);
-      localStorage.setItem('rol',rol);
+
     })
   }
 

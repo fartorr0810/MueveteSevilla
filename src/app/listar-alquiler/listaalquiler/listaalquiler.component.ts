@@ -44,7 +44,7 @@ export class ListaalquilerComponent implements OnInit {
     this.servicioAlquiler.getListaAlquilerUsuario().subscribe({
       next:(resp)=> {
         this.listadealquileres=resp;
-        if(this.listadealquileres.length==0){
+        if(this.listadealquileres==null){
           Swal.fire({
             title: 'No tiene alquileres realizados',
             icon: 'info',
