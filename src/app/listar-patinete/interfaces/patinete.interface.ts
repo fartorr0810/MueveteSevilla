@@ -8,3 +8,11 @@ export interface Patinete{
   "disponible": boolean,
   "kmhora": number
 }
+
+export interface PatineteSubida{
+  "modelo": string,
+  "precioHora": number,
+  "disponible": boolean,
+  "kmhora": number
+}
+

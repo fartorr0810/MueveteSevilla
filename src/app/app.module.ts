@@ -13,12 +13,11 @@ import { SharedModule } from './shared/shared.module';
 import { ListarPatineteModule } from './listar-patinete/listar-patinete.module';
 import { ReservaModule } from './reserva/reserva.module';
 import { ListarAlquilerModule } from './listar-alquiler/listar-alquiler.module';
-import { AnadirComponent } from './anadirPatinete/anadir/anadir.component';
+import { AnadirPatineteModule } from './anadir-patinete/anadir-patinete.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AnadirComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +29,7 @@ import { AnadirComponent } from './anadirPatinete/anadir/anadir.component';
     ContactoModule,
     SharedModule,
     ListarPatineteModule,
+    AnadirPatineteModule,
     ReservaModule
   ],
   providers: [ControlAccesoService,AuthGuard],

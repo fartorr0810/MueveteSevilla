@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnadirComponent } from './anadir/anadir.component';
+import { AnadirPatineteRoutingModule } from './anadir-patinete.routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -9,7 +11,10 @@ import { AnadirComponent } from './anadir/anadir.component';
     AnadirComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AnadirPatineteRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     AnadirComponent
