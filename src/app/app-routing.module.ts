@@ -39,6 +39,10 @@ const routes: Routes = [
     path:'alquiler',canActivate:[AuthGuard],
     loadChildren:()=> import('./listar-alquiler/listar-alquiler.module').then(m=>m.ListarAlquilerModule)
    },
+   {
+    path:'addpatinete',canActivate:[AuthGuard],
+    loadChildren:()=> import('./anadir-patinete/anadir-patinete.module').then(m=>m.AnadirPatineteModule)
+   },
   {
     path:'**',
     redirectTo:'home'

@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  rol:string=localStorage.getItem('rol')!;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  ngOnChanges(){
+  }
 }

@@ -13,10 +13,12 @@ import { SharedModule } from './shared/shared.module';
 import { ListarPatineteModule } from './listar-patinete/listar-patinete.module';
 import { ReservaModule } from './reserva/reserva.module';
 import { ListarAlquilerModule } from './listar-alquiler/listar-alquiler.module';
+import { AnadirComponent } from './anadirPatinete/anadir/anadir.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AnadirComponent,
   ],
   imports: [
     BrowserModule,
