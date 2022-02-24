@@ -1,3 +1,5 @@
+import { Byte } from "@angular/compiler/src/util"
+
 /**
  * Interfaz con los datos del patinete
  */
@@ -6,7 +8,8 @@ export interface Patinete{
   "modelo": string,
   "precioHora": number,
   "disponible": boolean,
-  "kmhora": number
+  "kmhora": number,
+  "imagen":Byte[]
 }
 
 export interface PatineteSubida{

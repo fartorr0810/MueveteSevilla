@@ -22,7 +22,6 @@ export class AnadirpatineteService {
     .set('kmhora',patinete.kmhora)
     console.log(params);
     console.log(archivo.get('file'));
-
     let url="http://localhost:9000/subida";
     return this.http.post(url,archivo,{params})
   }
