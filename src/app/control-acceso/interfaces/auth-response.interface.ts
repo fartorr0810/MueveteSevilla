@@ -13,5 +13,7 @@ export interface UsuarioLogin{
   email:string,
   password:string
 }
-
+export interface ExisteEmail{
+  respuesta:boolean;
+}
 

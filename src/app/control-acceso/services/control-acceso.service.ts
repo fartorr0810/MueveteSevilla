@@ -65,6 +65,24 @@ export class ControlAccesoService {
     httpHeaders.append('Access-Control-Allow-Origin','*');
     return this.http.post<AuthResponse>(direccionurl,bodypeticion,{ headers: httpHeaders});
   }
+  comprobarEmail(email:string):any{
+    let direccionurl="http://localhost:9000/comprobar-email";
+    let bodypeticion={
+      'email':email
+    }
+    const httpHeaders=new HttpHeaders()
+    httpHeaders.append('Access-Control-Allow-Origin','*');
+    this.http.post(direccionurl,bodypeticion,{ headers: httpHeaders}).subscribe({
+      next:(resp=>{
+        return true;
+      }),
+      error:resp=>{
+        return false;
+      }
+    });
+  }
+
+
   /**
    * Metodo para obtener el usuario y lo introduce en el localStorage la id.
    */

@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MueveteSevilla';
+  diaActual:Date=new Date();
   roldelusuario:string=localStorage.getItem('rol')!;
 }

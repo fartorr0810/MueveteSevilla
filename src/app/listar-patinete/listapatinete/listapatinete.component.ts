@@ -37,6 +37,10 @@ export class ListapatineteComponent implements OnInit {
     .subscribe({
       next: (resp => {
         this.listapatinetes=resp;
+        for (let index = 0; index < this.listapatinetes.length; index++) {
+          let element = this.listapatinetes[index];
+          element.imagenregenerada=this.servicioPatinete.obtenerFoto(element);
+        }
       }),
       error: (resp => {
         Swal.fire({

@@ -12,6 +12,9 @@
             <h2>Panel de Administracion</h2>
         </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
+          <a class="btn btn-sm btn-outline-secondary" (click)="cerrarSesion()">
+            <h5>Cerrar Sesion</h5>
+        </a>
             <a class="btn btn-sm btn-outline-secondary" [routerLink]="['login']" routerLinkActive="router-link-active">
                 <h5>Login</h5>
             </a>
@@ -34,4 +37,9 @@
         <a class="p-2 text-muted" href="#"></a>
         <li class="p-2"><a class="nav-link h4 text-dark" [routerLink]="['contacto']" routerLinkActive="router-link-active">Contacto</a></li>
     </nav>
+    <div class="p-md-2 text-white rounded bg-primary">
+      <div class="col-md-6">
+        <h6 class="font-italic">Hola, estamos a : {{fecha | date: "dd-MM-yyyy HH:MM" }}</h6>
+      </div>
+    </div>
 </div>

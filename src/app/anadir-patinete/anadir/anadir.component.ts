@@ -13,7 +13,7 @@ export class AnadirComponent implements OnInit {
   formulario = new FormGroup({
     modelo: new FormControl('',[Validators.required]),
     precioHora:new FormControl('',[Validators.required]),
-    disponible: new FormControl('',[Validators.required]),
+    disponible: new FormControl(true,[Validators.required]),
     kmhora:new FormControl('',[Validators.required]),
     file:new FormControl('', [Validators.required]),
     fileSource: new FormControl('', [Validators.required])
@@ -51,7 +51,7 @@ export class AnadirComponent implements OnInit {
 
     this.serviciofichero.subirFichero(formData, patin).subscribe(resp=>{
       Swal.fire({
-        title: `{{resp}}`,
+        title: 'Patinete añadido con exito',
         icon: 'success',
         confirmButtonText: 'Ok'
       })

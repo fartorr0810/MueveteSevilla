@@ -9,7 +9,11 @@
                             <h5 class="card-title text-center">{{patinete.modelo}}</h5>
                             <p class="card-text text-center">Velocidad maxima: {{patinete.kmhora}} km/h</p>
                             <p class="card-text text-center"> El precio por hora es de: {{patinete.precioHora}} €</p>
-                            <img src="{{patinete.imagen}}" class="img-responsive" style="margin: auto;"><br>
+                            <img *ngIf="patinete.imagenregenerada!='data:image/png;base64,null'" src="{{patinete.imagenregenerada}}" class="img-responsive col-12" style="margin: auto;
+                            width: 26;
+                            height: 26;
+                           "><br>
+                             <img *ngIf="patinete.imagenregenerada=='data:image/png;base64,null'" src="https://www.ciclados.com/web/image/product.template/199/image_256/Patinete%20el%C3%A9ctrico%20Wiizzee%20WS3?unique=25aada4" class="img-responsive" style="margin: auto;"><br>
                             <div class="mx-auto col-6">
                                 <p class="btn btn-primary" *ngIf="patinete.disponible==true">Disponible</p>
                                 <p class="btn btn-danger" *ngIf="patinete.disponible==false">No Disponible</p>

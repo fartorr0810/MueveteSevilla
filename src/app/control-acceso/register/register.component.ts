@@ -28,7 +28,9 @@ export class RegisterComponent implements OnInit {
     this.formulario=this.formBuilder.group({
       name:['',[Validators.required,Validators.minLength(4)]],
       username:['',[Validators.required,Validators.minLength(4),Validators.pattern("^[a-z0-9_-]{8,15}$")]],
-      email:['',[Validators.required,Validators.email]],
+      email:['',[Validators.required,Validators.email],
+      // [this.comprobarEmail]
+    ],
       password:['',[Validators.required,Validators.minLength(8)]]
     })
   }
@@ -41,6 +43,13 @@ export class RegisterComponent implements OnInit {
     return this.formulario.controls[campo].errors
             && this.formulario.controls[campo].touched;
   }
+  // comprobarEmail() {
+  //   let email=this.formulario?.controls['email'].value;
+  //   return this.authservice.comprobarEmail(email);
+  // }
+
+
+  
   /**
    *Metodo para registrar un usuario, mete en una variable los datos del formulario.
    Comprueba que todos los campos que se introducen son correctos. Luego llama al servicio

@@ -22,7 +22,10 @@ export class PatineteService {
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     return this.http.get<Patinete[]>(direccionurl,{ headers: httpHeaders});
   }
-  anadirPatinete(){
 
+  obtenerFoto(patinete:Patinete){
+    const base64String = btoa(String.fromCharCode(...new Uint8Array(patinete.imagen)));
+    const source = `data:image/png;base64,${base64String}`+patinete.imagen;
+    return source;
   }
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,12 +9,29 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class DashboardComponent implements OnInit {
-
+  @Input() fecha!: Date;
   rol:string=localStorage.getItem('rol')!;
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
   ngOnChanges(){
+  }
+  cerrarSesion(){
+    if (localStorage.getItem('idusuario')!=null){
+      Swal.fire({
+        title: 'La sesion se ha cerrado con exito',
+        icon: 'info',
+        confirmButtonText: 'Ok'
+      });
+    }else{
+      Swal.fire({
+        title: 'No hay ninguna sesion activa',
+        icon: 'info',
+        confirmButtonText: 'Ok'
+      });
+    }
+    localStorage.clear();
+    this.router.navigateByUrl('/home')
   }
 }
