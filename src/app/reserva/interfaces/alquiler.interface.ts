@@ -5,7 +5,8 @@ export interface AlquilerI{
   horaentrega:Date,
   horasalquiler:number,
   patinete:number,
-  user:number
+  user:number,
+  codigo:string
 }
 /**
  * Interfaz para calcular el alquiler
@@ -15,7 +16,8 @@ export interface CalcularAlquiler{
   horasalquiler:number,
   patinete:number,
   horarecogida:string,
-  preciototal:number
+  preciototal:number,
+  codigo:string
 }
 /**
  * Interfaz cuando vamos a listar alquileres

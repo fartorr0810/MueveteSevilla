@@ -44,6 +44,7 @@ export class ReservaComponent implements OnInit {
       horasalquiler:['',[Validators.required,Validators.min(0)]],
       confirmacion:[false,[Validators.required]],
       user:[localStorage.getItem("idusuario")],
+      codigo:['']
     })
   }
 /**

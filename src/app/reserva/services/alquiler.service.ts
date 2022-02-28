@@ -18,7 +18,8 @@ export class AlquilerService {
       horaentrega:alquiler.horaentrega,
       horasalquiler:alquiler.horasalquiler,
       patinete:alquiler.patinete,
-      user:alquiler.user
+      user:alquiler.user,
+      codigo:alquiler.codigo
     }
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     return this.http.post<AlquilerI>(direccionurl,bodypeticion,{ headers: httpHeaders});
@@ -29,7 +30,8 @@ export class AlquilerService {
       horaentrega:alquiler.horaentrega,
       horasalquiler:alquiler.horasalquiler,
       patinete:alquiler.patinete,
-      user:alquiler.user
+      user:alquiler.user,
+      codigo:alquiler.codigo
     }
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     return this.http.post<CalcularAlquiler>(direccionurl,bodypeticion,{ headers: httpHeaders});
