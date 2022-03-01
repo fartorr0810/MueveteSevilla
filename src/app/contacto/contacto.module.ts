@@ -8,11 +8,13 @@ import { RouterModule } from '@angular/router';
 import { ControlAccesoModule } from '../control-acceso/control-acceso.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactoserviceService } from './services/contactoservice.service';
+import { ValorarComponent } from './contacto/valorar/valorar.component';
 
 //Importamos los modules necesarios y proveedores
 @NgModule({
   declarations: [
-    ContactoComponent
+    ContactoComponent,
+    ValorarComponent
   ],
   imports: [
     CommonModule,

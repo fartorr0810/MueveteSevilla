@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -10,6 +10,9 @@ import Swal from 'sweetalert2';
 })
 export class DashboardComponent implements OnInit {
   @Input() fecha!: Date;
+  @Output() myOutput:EventEmitter<string>= new EventEmitter();
+  outputMessage:string="I am child component."
+
   rol:string=localStorage.getItem('rol')!;
   constructor(private router:Router) { }
 
@@ -34,4 +37,5 @@ export class DashboardComponent implements OnInit {
     localStorage.clear();
     this.router.navigateByUrl('/home')
   }
+
 }

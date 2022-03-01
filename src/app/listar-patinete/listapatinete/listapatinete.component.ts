@@ -28,6 +28,29 @@ export class ListapatineteComponent implements OnInit {
   //Constructor donde inyectamos el servicio de patinetes
   constructor(private servicioPatinete:PatineteService) {
   }
+  buscarPatinete(modelo:string){
+    let encontrado:boolean=false;
+    for (let index = 0; index < this.listapatinetes.length; index++) {
+      const element = this.listapatinetes[index];
+      if (element.modelo==modelo){
+        encontrado=true;
+        Swal.fire({
+          title: element.modelo,
+          text: 'Esta disponible',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        });
+      }
+    }
+    if (encontrado==false){
+      Swal.fire({
+        title: 'Lo sentimos',
+        text: 'No esta disponible',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+    }
+  }
 /**
  * Llamamos a obtenerPatinetes que esta en el servicio de Patintetes, si no hay patinetes
  * mostramos un alert con que no hay patinetes no estan disponibles

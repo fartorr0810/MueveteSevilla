@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -15,6 +15,7 @@ import { ControlAccesoService } from '../services/control-acceso.service';
  */
 export class LoginComponent implements OnInit {
   //Formulario que construimos
+
   formulario:FormGroup=this.fb.group({
     email:!['',[Validators.required,Validators.email]],
     password:!['',[Validators.required,Validators.minLength(5)]]
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 /**
  * Metodo login , en caso de que los formularios tenga valores, se llamara al servicio authservice
  * y llamaremos al metodo login y le pasaremos los campos necesarios, nos suscribiremos
