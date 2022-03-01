@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
         }),
         catchError( err => {
             Swal.fire({
-              title: err.error.message,
+              title: 'Por favor',
               text: 'Inicia sesion',
               icon: 'error',
               confirmButtonText: 'Ok'

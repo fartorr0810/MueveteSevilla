@@ -49,7 +49,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token',resp.jwt_token!)
           localStorage.setItem('idusuario',resp.idusuario!)
           localStorage.setItem('rol',resp.rol)
-          this.router.navigateByUrl('/home');
+          this.router.navigateByUrl('/home').then(resp=> {
+            window.location.reload();
+          });
         }),
         error:resp=>{
           Swal.fire({

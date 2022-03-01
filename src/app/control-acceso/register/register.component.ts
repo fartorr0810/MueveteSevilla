@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
   // }
 
 
-  
+
   /**
    *Metodo para registrar un usuario, mete en una variable los datos del formulario.
    Comprueba que todos los campos que se introducen son correctos. Luego llama al servicio
@@ -69,11 +69,14 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('token',resp.jwt_token!)
           localStorage.setItem('idusuario',resp.idusuario!)
           localStorage.setItem('rol',resp.rol)
-          this.router.navigateByUrl('/home');
+          this.router.navigateByUrl('/home').then(resp=>{
+            console.log("a");
+
+          });
         }),
         error:resp=>{
           Swal.fire({
-            title: resp.error.message,
+            title: 'Lo sentimos',
             text: 'Email repetido',
             icon: 'error',
             confirmButtonText: 'Ok'
