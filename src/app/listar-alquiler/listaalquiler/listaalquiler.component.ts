@@ -59,6 +59,7 @@ export class ListaalquilerComponent implements OnInit {
   }
   entregarPatinetes(idalquiler:number){
     this.servicioAlquiler.entregarPatinete(idalquiler).subscribe({
+
       next:(resp)=> {
         Swal.fire({
           title: 'El patinete ha sido entregado',

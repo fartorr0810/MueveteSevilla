@@ -44,6 +44,10 @@ const routes: Routes = [
     path:'addpatinete',canActivate:[AuthGuard],
     loadChildren:()=> import('./anadir-patinete/anadir-patinete.module').then(m=>m.AnadirPatineteModule)
    },
+   {
+     path:'listarcomentario',canActivate:[AuthGuard],
+     loadChildren:()=> import('./listar-comentarios/listar-comentarios.module').then(m=>m.ListarComentariosModule)
+   },
   {
     path:'**',
     redirectTo:'home'
