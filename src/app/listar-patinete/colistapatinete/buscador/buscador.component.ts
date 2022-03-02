@@ -7,6 +7,7 @@ import { Output, EventEmitter } from '@angular/core';
   ]
 })
 export class BuscadorComponent implements OnInit {
+  //output con el campo de busqueda
   @Output() busqueda = new EventEmitter<string>();
   termino:string='';
 
@@ -14,7 +15,9 @@ export class BuscadorComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+/**
+ * Propagamos la busqueda
+ */
   buscar() {
     this.busqueda.emit(this.termino);
 

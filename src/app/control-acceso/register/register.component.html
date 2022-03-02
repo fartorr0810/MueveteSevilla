@@ -13,27 +13,27 @@
                                 <div class="form-outline mb-4">
                                     <label class="form-label">Nombre y Apellidos</label>
                                     <!--Input con el campo al que va a rellenar,-->
-                                    <input type="text" formControlName="name" class="form-control form-control-lg" required/>
+                                    <input type="text" placeholder="Pedro Luis De La Fuente" formControlName="name" class="form-control form-control-lg" required/>
                                     <span *ngIf="campoEsValido('name')" class="form-text text-danger">Debe introducir un nombre valido</span>
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label class="form-label">Nombre de usuario</label>
                                     <!--Input con el campo al que va a rellenar,-->
-                                    <input type="text" formControlName="username" class="form-control form-control-lg" required />
+                                    <input type="text" placeholder="pedrol123" formControlName="username" class="form-control form-control-lg" required />
                                     <span *ngIf="campoEsValido('username')" class="form-text text-danger">Debe introducir un nombre de usuario valido</span>
 
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label class="form-label">Email</label>
                                     <!--Input con el campo al que va a rellenar,-->
-                                    <input type="email" formControlName="email" class="form-control form-control-lg" required/>
+                                    <input type="email" placeholder="email@email.com" formControlName="email" class="form-control form-control-lg" required/>
                                     <span *ngIf="campoEsValido('email')" class="form-text text-danger">Debe introducir un email valido</span>
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label class="form-label">Contraseña</label>
                                     <!--Input con el campo al que va a rellenar,-->
-                                    <input type="password" formControlName="password" id="myInput" class="form-control form-control-lg" required/>
-                                    <span *ngIf="campoEsValido('password') " class="form-text text-danger">Debe introducir una contraseña valido</span>
+                                    <input type="password" placeholder="Introduzca la contraseña que desee" formControlName="password" id="myInput" class="form-control form-control-lg" required/>
+                                    <span *ngIf="campoEsValido('password') " class="form-text text-danger">Debe introducir una contraseña valido</span><br>
                                     <input type="checkbox" (click)="mostrarPassword()">Ver contraseña
                                 </div>
                                 <div class="d-flex justify-content-center">

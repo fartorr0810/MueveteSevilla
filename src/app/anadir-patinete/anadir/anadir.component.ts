@@ -9,7 +9,13 @@ import { AnadirpatineteService } from '../services/anadirpatinete.service';
   styles: [
   ]
 })
+/**
+ * Clase Anadir componente
+ */
 export class AnadirComponent implements OnInit {
+  /**
+   * Inicialicamos formulario.
+   */
   formulario = new FormGroup({
     modelo: new FormControl('',[Validators.required]),
     precioHora:new FormControl('',[Validators.required]),
@@ -19,15 +25,23 @@ export class AnadirComponent implements OnInit {
     fileSource: new FormControl('', [Validators.required])
 
   });
+  //Inyectamos servicios
   constructor(private serviciofichero:AnadirpatineteService) { }
 
   ngOnInit(): void {
   }
-
+/**
+ * Comprobamos si el campo es valido
+ * @param campo campo a comprobar
+ * @returns true o false si cumple o no
+ */
   campoEsValido( campo: string ) {
     return this.formulario.controls[campo].errors && this.formulario.controls[campo].touched;
   }
-
+/**
+ * Recogemos el archivo e introducimos este al formulario
+ * @param event
+ */
   onFileChange(event:any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -36,7 +50,11 @@ export class AnadirComponent implements OnInit {
       });
     }
   }
-
+/**
+ * Metodo que recoge los datos del patin, un FormData con el archivo subido y posteriormente
+ * llamamos al servicio de subir ficheros pasandole el patin y la imagen,
+ * Si es correcto, se anadira.
+ */
   submit(){
     const patin={
       modelo:this.formulario.get('modelo')?.value,
@@ -47,8 +65,6 @@ export class AnadirComponent implements OnInit {
     }
     const formData = new FormData();
     formData.append('file', this.formulario.get('fileSource')!.value);
-    console.log(formData.get('file'));
-
     this.serviciofichero.subirFichero(formData, patin).subscribe(resp=>{
       Swal.fire({
         title: 'Patinete añadido con exito',

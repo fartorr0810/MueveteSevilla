@@ -21,7 +21,7 @@
                         <div class="form-group col-md-6">
                             <label for="ejemplo_email_3" class="col-lg-5 control-label">¿Cuantas horas?</label>
                             <div class="col-lg-5">
-                                <input type="number" formControlName="horasalquiler" class="form-control" required>
+                                <input type="number" placeholder="Horas del alquiler" formControlName="horasalquiler" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                             <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha entrega</label>
                             <div class="col-lg-5">
                                 <!--Input tipo datetime-local para que pille la hota-->
-                                <input type="datetime-local" min="{{fechaahora}}" formControlName="horaentrega" class="form-control" required>
+                                <input type="datetime-local" placeholder="Hora de inicio del alquiler" min="{{fechaahora}}" formControlName="horaentrega" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
@@ -49,7 +49,7 @@
                             <div class="col-lg-5 ">
                                 <!--Checkbox para aceptar los terminos-->
                                 <label for="ejemplo_email_3 " class="col-lg-5 control-label ">Codigo de promocion:</label>
-                                <input type="text " formControlName="codigo" class="form-control ">
+                                <input type="text " placeholder="Codigo de descuento " formControlName="codigo" class="form-control ">
                             </div>
                         </div>
                         <div class="form-group col-md-6 ">

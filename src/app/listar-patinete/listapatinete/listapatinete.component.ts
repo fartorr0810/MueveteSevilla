@@ -28,6 +28,11 @@ export class ListapatineteComponent implements OnInit {
   //Constructor donde inyectamos el servicio de patinetes
   constructor(private servicioPatinete:PatineteService) {
   }
+  /**
+   * Buscamos el patinete por modelo, recorriendo todos los patinetes y si lo encuentra
+   * mostrara un mensaje si esta disponible o no.
+   * @param modelo el modelo a buscar
+   */
   buscarPatinete(modelo:string){
     let encontrado:boolean=false;
     for (let index = 0; index < this.listapatinetes.length; index++) {

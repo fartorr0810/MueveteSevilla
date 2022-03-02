@@ -6,6 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styles: [
   ]
 })
+/**
+ * HomeComponent 
+ */
 export class HomeComponent implements OnInit {
   fechahoy!:Date;
   constructor() { }

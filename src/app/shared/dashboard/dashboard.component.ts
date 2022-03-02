@@ -12,7 +12,9 @@ export class DashboardComponent implements OnInit {
   saludo:string="";
   rol:string=localStorage.getItem('rol')!;
   constructor(private router:Router) { }
-
+  /**
+   * Metodo para indicar si eres Administrador, Usuario o invitado.
+   */
   bienvenida(){
     if (this.rol==""){
       this.saludo="Login"
@@ -25,15 +27,19 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-
+/**
+ * Comprobamos el rol del usuario al iniciar
+ */
   ngOnInit(): void {
     this.bienvenida();
-    console.log(this.rol);
 
   }
   ngOnChanges(){
   }
-
+/**
+ * Metodo para cerrar la sesion al limpiar el localStorage, si estas logueado lo limpia y te manda al home
+ * si no , indicara que no hay ninguna sesion activa
+ */
   cerrarSesion(){
     if (localStorage.getItem('idusuario')!=null){
     this.router.navigateByUrl('/home').then(then=>{

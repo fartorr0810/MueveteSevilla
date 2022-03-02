@@ -22,7 +22,11 @@ export class PatineteService {
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     return this.http.get<Patinete[]>(direccionurl,{ headers: httpHeaders});
   }
-
+/**
+ * Metodo para reconstruir los bytes de la imagen.
+ * @param patinete objeto patinete con los datos
+ * @returns devolvemos los bits para recrear la imagen.
+ */
   obtenerFoto(patinete:Patinete){
     const base64String = btoa(String.fromCharCode(...new Uint8Array(patinete.imagen)));
     const source = `data:image/png;base64,${base64String}`+patinete.imagen;

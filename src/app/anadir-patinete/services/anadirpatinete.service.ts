@@ -5,10 +5,20 @@ import { Patinete, PatineteSubida } from 'src/app/listar-patinete/interfaces/pat
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Servicio anadir patinte
+ */
 export class AnadirpatineteService {
-
+  //Inyectamos HttpClient
   constructor(private http:HttpClient) { }
-
+/**
+ * Metodo donde subimos el archivo, anadimos las cabecera Auth,
+ * un Params con lso datos del patinete y en el post pasamos la url,
+ * la imagen y los parametros
+ * @param archivo FormData con la imagen dentro
+ * @param patinete Objeto con los datos del patinete
+ * @returns Post al servidor con los parametros
+ */
   subirFichero(archivo:FormData,patinete:PatineteSubida){
 
     let token =localStorage.getItem('token');
@@ -20,8 +30,6 @@ export class AnadirpatineteService {
     .set('precioHora',patinete.precioHora)
     .set('disponible',patinete.disponible)
     .set('kmhora',patinete.kmhora)
-    console.log(params);
-    console.log(archivo.get('file'));
     let url="http://localhost:9000/subida";
     return this.http.post(url,archivo,{params})
   }

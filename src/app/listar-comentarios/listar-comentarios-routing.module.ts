@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListacomentariosComponent } from './listacomentarios/listacomentarios.component';
-
+//Rutas
 const routes: Routes = [
   {
     path:'',
