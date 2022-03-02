@@ -48,6 +48,10 @@ const routes: Routes = [
      path:'listarcomentario',canActivate:[AuthGuard],
      loadChildren:()=> import('./listar-comentarios/listar-comentarios.module').then(m=>m.ListarComentariosModule)
    },
+   {
+    path:'alquileradmin',canActivate:[AuthGuard],
+    loadChildren:()=> import('./listar-comentarios-admin/listar-comentarios-admin.module').then(m=>m.ListarComentariosAdminModule)
+   },
   {
     path:'**',
     redirectTo:'home'
