@@ -3,7 +3,6 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './control-acceso/login/login.component';
 import { RegisterComponent } from './control-acceso/register/register.component';
-import { HomeComponent } from './home/home/home.component';
 //Rutas con LazyLoading
 const routes: Routes = [
   {
@@ -17,12 +16,14 @@ const routes: Routes = [
    },
    {
      path:'register',
-     component:RegisterComponent
+     component:RegisterComponent,
+     loadChildren:() => import('./control-acceso/control-acceso.module').then(m=> m.ControlAccesoModule)
+
    },
    {
      path:'home',
-     component:HomeComponent
-   },
+     loadChildren:()=> import('./home/home.module').then(m=>m.HomeModule)
+    },
    {
     path:'contacto',
     loadChildren:()=> import('./contacto/contacto.module').then(m=>m.ContactoModule)

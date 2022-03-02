@@ -16,7 +16,6 @@ export class BuscadorComponent implements OnInit {
   }
 
   buscar() {
-    console.log(this.termino);
     this.busqueda.emit(this.termino);
 
   }

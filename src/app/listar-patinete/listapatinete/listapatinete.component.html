@@ -4,7 +4,7 @@
             <app-buscador (busqueda)="buscarPatinete($event)"></app-buscador>
             <!--Recorremos la lista de patinetes mostrando un card de cada uno-->
             <div class="col-md-4 p-2" *ngFor="let patinete of listapatinetes">
-                <div class="card shadow">
+                <div class="card shadow car">
                     <div class="card">
                         <div class="card-body mx-auto">
                             <h5 class="card-title text-center">{{patinete.modelo}}</h5>

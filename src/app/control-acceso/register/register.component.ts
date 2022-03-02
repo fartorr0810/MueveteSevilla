@@ -47,7 +47,14 @@ export class RegisterComponent implements OnInit {
   //   let email=this.formulario?.controls['email'].value;
   //   return this.authservice.comprobarEmail(email);
   // }
-
+  mostrarPassword() {
+    var x:any = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
 
 
   /**
@@ -70,8 +77,7 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('idusuario',resp.idusuario!)
           localStorage.setItem('rol',resp.rol)
           this.router.navigateByUrl('/home').then(resp=>{
-            console.log("a");
-
+            window.location.reload();
           });
         }),
         error:resp=>{

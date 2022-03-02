@@ -61,10 +61,11 @@ export class ListaalquilerComponent implements OnInit {
     this.servicioAlquiler.entregarPatinete(idalquiler).subscribe({
       next:(resp)=> {
         Swal.fire({
-          title: 'El patinete ha sido entregadocla8',
+          title: 'El patinete ha sido entregado',
           icon: 'info',
           confirmButtonText: 'Ok'
         });
+      this.router.navigateByUrl("/home");
       }
     })
   }
