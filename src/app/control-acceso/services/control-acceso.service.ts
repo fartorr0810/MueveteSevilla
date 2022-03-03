@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthResponse } from '../interfaces/auth-response.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,6 @@ import { AuthResponse } from '../interfaces/auth-response.interface';
  */
 export class ControlAccesoService {
   //Indicamos la ruta base.
-  private url:string="http://localhost:9000";
 //Inyectamos en el constructor el HttpClient
   constructor(private http:HttpClient) { }
 
@@ -24,7 +24,7 @@ export class ControlAccesoService {
  * nos devolvera el back el error correspondiente.
  */
   login(email:string,password:string){
-    let direccionurl=this.url+"/auth/login";
+    let direccionurl=environment.baseURL+"auth/login";
 
     let bodypeticion={
       'email':email,
@@ -39,7 +39,7 @@ export class ControlAccesoService {
  * @returns devuelve el token
  */
   comprobarToken():Observable <AuthResponse>{
-    let direccionurl="http://localhost:9000/user";
+    let direccionurl=environment.baseURL+"user";
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     return this.http.get<AuthResponse>(direccionurl,{headers :httpHeaders});
   }
@@ -54,7 +54,7 @@ export class ControlAccesoService {
    * correspondiente.
    */
   register(email:string,password:string,username:string,name:string){
-    let direccionurl="http://localhost:9000/auth/register";
+    let direccionurl=environment.baseURL+"auth/register";
     let bodypeticion={
       'email':email,
       'password':password,
@@ -66,7 +66,7 @@ export class ControlAccesoService {
     return this.http.post<AuthResponse>(direccionurl,bodypeticion,{ headers: httpHeaders});
   }
   comprobarEmail(email:string):any{
-    let direccionurl="http://localhost:9000/comprobar-email";
+    let direccionurl=environment.baseURL+"comprobar-email";
     let bodypeticion={
       'email':email
     }
@@ -87,7 +87,7 @@ export class ControlAccesoService {
    * Metodo para obtener el usuario y lo introduce en el localStorage la id.
    */
   obtenerUser(){
-    let direccionurl="http://localhost:9000/user";
+    let direccionurl=environment.baseURL+"user";
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     this.http.get(direccionurl,{headers :httpHeaders}).subscribe(resp=>{
       let numero:string=String(resp);
@@ -97,7 +97,7 @@ export class ControlAccesoService {
   obtenerRol(){
     let id:string=localStorage.getItem("idusuario")!;
     console.log(id);
-    let direccionurl="http://localhost:9000/user/"+id;
+    let direccionurl=environment.baseURL+"user/"+id;
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     this.http.get(direccionurl,{headers :httpHeaders}).subscribe(resp=>{
 

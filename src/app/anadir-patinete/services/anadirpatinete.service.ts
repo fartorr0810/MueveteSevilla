@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Patinete, PatineteSubida } from 'src/app/listar-patinete/interfaces/patinete.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class AnadirpatineteService {
     .set('precioHora',patinete.precioHora)
     .set('disponible',patinete.disponible)
     .set('kmhora',patinete.kmhora)
-    let url="http://localhost:9000/subida";
+    let url=environment.baseURL+"subida";
     return this.http.post(url,archivo,{params})
   }
 

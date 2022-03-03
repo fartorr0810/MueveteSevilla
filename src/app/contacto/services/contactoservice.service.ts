@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { ComentarioI } from '../interfaces/comentario.interface';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class ContactoserviceService {
   constructor(private http:HttpClient) { }
 
   enviarComentario(comentario:ComentarioI){
-    let direccionurl="http://localhost:9000/comentario";
+    let direccionurl=environment.baseURL+"comentario";
     let bodypeticion={
       'email':comentario.email,
       'telefono':comentario.telefono,
