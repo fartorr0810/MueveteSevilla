@@ -7,7 +7,7 @@ import { RegisterComponent } from './control-acceso/register/register.component'
 const routes: Routes = [
   {
     path:'',
-    loadChildren:()=> import('./shared/shared.module').then(m=> m.SharedModule)
+    loadChildren:()=> import('./home/home.module').then(m=> m.HomeModule)
   },
    {
      path:'login',

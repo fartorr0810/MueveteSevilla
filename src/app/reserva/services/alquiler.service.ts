@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Patinete } from 'src/app/listar-patinete/interfaces/patinete.interface';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { AlquilerI, CalcularAlquiler, ListaAlquilerI } from '../interfaces/alquiler.interface';
 
 @Injectable({
