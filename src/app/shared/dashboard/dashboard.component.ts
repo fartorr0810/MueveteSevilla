@@ -11,6 +11,8 @@ export class DashboardComponent implements OnInit {
   @Input() fecha!: Date;
   saludo:string="";
   rol:string=localStorage.getItem('rol')!;
+  fontSize = 14;
+
   constructor(private router:Router) { }
   /**
    * Metodo para indicar si eres Administrador, Usuario o invitado.
@@ -56,5 +58,8 @@ export class DashboardComponent implements OnInit {
     localStorage.clear();
     this.router.navigateByUrl('/home')
   }
-
+  changeFont(operator:any){
+    operator === '+' ? this.fontSize++ : this.fontSize--;
+    document.getElementsByTagName('body')[0].style.fontSize  = `${this.fontSize}px`;
+  }
 }
