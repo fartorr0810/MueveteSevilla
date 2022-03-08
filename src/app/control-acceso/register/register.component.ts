@@ -56,14 +56,14 @@ export class RegisterComponent implements OnInit {
       x.type = "password";
     }
   }
-  get mensajesErrores(): string {
+  get mensajesErrores() {
     const errors = this.formulario.get('email')?.errors!;
     if ( errors['required'] ) {
-      return 'El email es obligatorio';
+      return 'El campo email es obligatorio';
     } else if ( errors['pattern'] ) {
-      return 'El valor ingresado no tiene formato de correo';
+      return 'El dato introducido es incorrecto';
     } else if ( errors['emailenuso'] ) {
-      return 'Este email ya está registrado en el sistema';
+      return 'Este email ya está ya fue registrado por otro usuario';
     }
     return '';
   }
