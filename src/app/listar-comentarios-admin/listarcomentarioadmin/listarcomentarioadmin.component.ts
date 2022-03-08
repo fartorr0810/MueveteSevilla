@@ -25,11 +25,8 @@ export class ListarcomentarioadminComponent implements OnInit {
     this.obtenerListaAlquileres();
     this.opcionesDataTables={
       pagingType:'full_numbers',
-      pageLength:10,
-      language:{
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "search": "Buscar:",
+      pageLength:10,      language:{
+        url:"http://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
       }
     }
   }
@@ -49,7 +46,7 @@ export class ListarcomentarioadminComponent implements OnInit {
           });
         }
         else{
-          this.triggerDatatables.next(resp);
+          this.triggerDatatables.next(null);
         }
       }
     })
