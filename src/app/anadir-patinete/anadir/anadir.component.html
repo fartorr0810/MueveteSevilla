@@ -10,28 +10,28 @@
                                 <label>Modelo</label>
                                 <input class="form-control" placeholder="Nombre del modelo de patinete" type="text" class="form-control" formControlName="modelo">
                                 <span class="form-text text-danger" *ngIf="campoEsValido('modelo')">
-        El campo no puede estar vacio
-      </span>
+      El campo no puede estar vacio
+    </span>
                             </div>
                             <div class="form-group">
                                 <label>Precio por hora</label>
                                 <input class="form-control" type="number" placeholder="Precio por hora del patinete" class="form-control" formControlName="precioHora">
                                 <span class="form-text text-danger" *ngIf="campoEsValido('precioHora')">
-          Debe tener un precio
-        </span>
+        Debe tener un precio
+      </span>
                             </div>
                             <div class="form-group">
-                                <label>Velocidad Maxima</label>
+                                <label>Velocidad Máxima</label>
                                 <input class="form-control" type="number" placeholder="Velocidad maxima del patinete" class="form-control" formControlName="kmhora">
                                 <span class="form-text text-danger" *ngIf="campoEsValido('kmhora')">
-          Velodidad por hora
-        </span>
+        Velodidad por hora
+      </span>
                             </div>
                             <div class="form-group">
                                 <label for="file">Imagen del patinete</label>
                                 <input formControlName="file" placeholder="Cargue la imagen del patinete" id="file" name="file" type="file" class="form-control" (change)="onFileChange($event)" />
                                 <span class="form-text text-danger" *ngIf="campoEsValido('file')">
-            </span>
+          </span>
                             </div>
                             <button class="btn btn-primary" type="submit">Enviar</button>
                         </form>

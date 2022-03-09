@@ -11,12 +11,12 @@ export class DashboardComponent implements OnInit {
   @Input() fecha!: Date;
   saludo:string="";
   rol:string=localStorage.getItem('rol')!;
-  fontSize = 14;
-
   constructor(private router:Router) { }
   /**
    * Metodo para indicar si eres Administrador, Usuario o invitado.
    */
+   fontSize = 14;
+
   bienvenida(){
     if (this.rol==""){
       this.saludo="Login"
@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
 
     }else{
       Swal.fire({
-        title: 'No hay ninguna sesion activa',
+        title: 'No hay ninguna sesión activa',
         icon: 'info',
         confirmButtonText: 'Ok'
       });

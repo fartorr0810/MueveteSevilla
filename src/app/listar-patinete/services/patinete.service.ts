@@ -19,7 +19,6 @@ export class PatineteService {
  */
   obtenerPatinetes():Observable<Patinete[]>{
     let direccionurl=environment.baseURL+"patinete";
-    console.log(direccionurl)
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     return this.http.get<Patinete[]>(direccionurl,{ headers: httpHeaders});
   }

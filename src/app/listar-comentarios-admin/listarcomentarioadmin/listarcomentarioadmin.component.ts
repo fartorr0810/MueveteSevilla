@@ -25,7 +25,8 @@ export class ListarcomentarioadminComponent implements OnInit {
     this.obtenerListaAlquileres();
     this.opcionesDataTables={
       pagingType:'full_numbers',
-      pageLength:10,      language:{
+      pageLength:10,
+      language:{
         url:"http://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
       }
     }
