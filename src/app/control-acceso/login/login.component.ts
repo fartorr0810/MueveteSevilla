@@ -16,10 +16,6 @@ import { ControlAccesoService } from '../services/control-acceso.service';
 export class LoginComponent implements OnInit {
   //Formulario que construimos
 
-  formulario:FormGroup=this.fb.group({
-    email:!['',[Validators.required,Validators.email]],
-    password:!['',[Validators.required,Validators.minLength(5)]]
-  })
 //Usuario con los campos necesarios
   usuario: UsuarioLogin={
     email:'',
@@ -28,8 +24,7 @@ export class LoginComponent implements OnInit {
   //Constructor donde inyectamos lo que necesitamos
   constructor(
       private router: Router,
-      private authservice: ControlAccesoService,
-      private fb:FormBuilder) {
+      private authservice: ControlAccesoService) {
   }
 
   ngOnInit(): void {
@@ -43,7 +38,7 @@ export class LoginComponent implements OnInit {
  * Si hay algun error , se mostrara al usuario un mensaje de error.
  */
   login(){
-    if (this.formulario.value){
+    if (this.usuario.email!='' || this.usuario.password!=''){
       this.authservice.login(this.usuario.email,this.usuario.password).subscribe({
         next:(resp=>{
           localStorage.setItem('token',resp.jwt_token!)

@@ -87,7 +87,8 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('token',resp.jwt_token!)
           localStorage.setItem('idusuario',resp.idusuario!)
           localStorage.setItem('rol',resp.rol)
-          this.router.navigateByUrl('/home');
+          this.router.navigate(['/home'], { queryParams: { roll: resp.rol } });
+
         }),
         error:resp=>{
           console.log(resp);

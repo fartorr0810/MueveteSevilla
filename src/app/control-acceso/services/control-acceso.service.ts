@@ -25,8 +25,6 @@ export class ControlAccesoService {
  */
   login(email:string,password:string){
     let direccionurl=environment.baseURL+"auth/login";
-    console.log(environment.baseURL);
-
     let bodypeticion={
       'email':email,
       'password':password
@@ -97,7 +95,6 @@ export class ControlAccesoService {
   }
   obtenerRol(){
     let id:string=localStorage.getItem("idusuario")!;
-    console.log(id);
     let direccionurl=environment.baseURL+"user/"+id;
     const httpHeaders=new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')}`);
     this.http.get(direccionurl,{headers :httpHeaders}).subscribe(resp=>{
