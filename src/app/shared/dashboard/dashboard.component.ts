@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { RouterLinkActive } from '@angular/router';
 @Component({
@@ -11,7 +11,8 @@ export class DashboardComponent implements OnInit {
   @Input() fecha!: Date;
   saludo:string="";
   rol:string=localStorage.getItem('rol')!;
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+    private rutaactiva: ActivatedRoute) { }
   /**
    * Metodo para indicar si eres Administrador, Usuario o invitado.
    */
@@ -27,6 +28,10 @@ export class DashboardComponent implements OnInit {
     if (this.rol=="User"){
       this.saludo="Usuario"
     }
+    if (this.rol==""){
+      this.saludo="Usuario"
+    }
+
   }
 
 /**
@@ -34,7 +39,9 @@ export class DashboardComponent implements OnInit {
  */
   ngOnInit(): void {
     this.bienvenida();
-
+    this.rutaactiva.queryParams.subscribe(params=>{
+      this.rol=params['roll']
+    })
   }
   ngOnChanges(){
   }
@@ -42,12 +49,13 @@ export class DashboardComponent implements OnInit {
  * Metodo para cerrar la sesion al limpiar el localStorage, si estas logueado lo limpia y te manda al home
  * si no , indicara que no hay ninguna sesion activa
  */
+ refreshComponent(){
+  this.router.navigate([this.router.url])
+}
   cerrarSesion(){
     if (localStorage.getItem('idusuario')!=null){
-    this.router.navigateByUrl('/home').then(then=>{
-      window.location.reload();
-    })
-
+    this.router.navigateByUrl('/home')
+    this.rol='';
     }else{
       Swal.fire({
         title: 'No hay ninguna sesión activa',
@@ -62,4 +70,10 @@ export class DashboardComponent implements OnInit {
     operator === '+' ? this.fontSize++ : this.fontSize--;
     document.getElementsByTagName('body')[0].style.fontSize  = `${this.fontSize}px`;
   }
+  reloadComponent() {
+    let currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
+    }
 }

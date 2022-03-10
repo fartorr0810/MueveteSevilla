@@ -18,6 +18,7 @@
             </a>
             <a class="btn btn-sm btn-outline-secondary" [routerLink]="['login']" routerLinkActive="router-link-active">
                 <h5 *ngIf="this.rol=='Admin'">Admin</h5>
+                <h5 *ngIf="this.rol==''">Login</h5>
                 <h5 *ngIf="this.rol==null">Login</h5>
                 <h5 *ngIf="this.rol=='User'">Usuario</h5>
 
